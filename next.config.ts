@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    /* config options here */
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'softstar.s3.amazonaws.com',
+            },
+        ],
+    },
+    sassOptions: {
+        additionalData: `@use '@/app/styles/_main.module.scss' as *;`,
+    },
 };
 
 export default nextConfig;

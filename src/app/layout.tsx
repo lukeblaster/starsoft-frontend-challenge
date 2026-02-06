@@ -1,5 +1,5 @@
-import React from 'react'
 import type { Metadata } from 'next'
+import React from 'react'
 import './styles/global.scss'
 
 import Header from './components/ui/Header'

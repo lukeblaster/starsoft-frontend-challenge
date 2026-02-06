@@ -1,0 +1,14 @@
+.button {
+    background-color: $primary-color;
+    color: $primary-contrast-text;
+    border: none;
+    border-radius: $border-radius;
+    padding: 10px 26px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: $line-height;
+    font-family: $font-primary;
+    height: $box-height;
+    box-shadow: 0px 100px 0px -20px #32325D40;
+}
