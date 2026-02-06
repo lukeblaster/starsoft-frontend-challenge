@@ -2,6 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import './styles/global.scss'
 
+import Header from './components/ui/Header'
+
 export const metadata: Metadata = {
     title: 'Starsoft Frontend Challenge',
     description: 'Starsoft Frontend Challenge',
@@ -14,7 +16,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <head>
+                <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+            </head>
+            <body>
+                <Header />
+                {children}
+            </body>
         </html>
     )
 }

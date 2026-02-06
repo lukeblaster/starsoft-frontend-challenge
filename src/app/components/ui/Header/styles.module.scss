@@ -1,0 +1,31 @@
+@use '@/app/styles/_main.module.scss' as *;
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    border-bottom: 1px solid $border-color;
+}
+
+.headerLogo {
+    width: 100px;
+    height: 40px;
+}
+
+.cartContainer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &_cartIcon {
+        font-size: 24px;
+        color: $primary-color;
+    }
+
+    &_cartCount {
+        font-size: 14px;
+        font-weight: 400;
+        color: $text-primary;
+    }
+}
