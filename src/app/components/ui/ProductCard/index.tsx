@@ -2,7 +2,7 @@ import { Product } from '@/app/models';
 import { formatPrice } from '@/app/utils/format-price';
 import ethereumIcon from '@/public/images/ethereum.svg';
 import Image from 'next/image';
-import Button from '../Button';
+import { Button } from '../Button';
 import styles from './styles.module.scss';
 
 export default function ProductCard({ product }: { product: Product }) {

@@ -2,6 +2,7 @@ import { Product } from '@/app/models';
 import ProductCard from "../ProductCard";
 
 import styles from './styles.module.scss';
+import LoadButton from '../LoadButton';
 
 const products: Product[] = [
     {
@@ -68,30 +69,33 @@ const products: Product[] = [
         price: "223.00000000",
         createdAt: "2024-07-18T23:55:43.238Z"
     },
-    {
-        id: 9,
-        name: "Hunter Dagger",
-        description: "Uma adaga de caça com cabo entalhado em ossos de presas raras, perfeita para emboscar criaturas selvagens ou inimigos desprevenidos.",
-        image: "https://softstar.s3.amazonaws.com/items/hunter-dagger.png",
-        price: "265.00000000",
-        createdAt: "2024-07-18T23:55:43.238Z"
-    },
-    {
-        id: 10,
-        name: "Ice Sword",
-        description: "Uma espada de cristal de gelo, esculpida nas cavernas congeladas das montanhas mais altas. Cada golpe congela o ar ao redor do alvo, transformando a batalha em um campo de gelo mortal.",
-        image: "https://softstar.s3.amazonaws.com/items/ice-sword.png",
-        price: "233.00000000",
-        createdAt: "2024-07-18T23:55:43.238Z"
-    }
+    // {
+    //     id: 9,
+    //     name: "Hunter Dagger",
+    //     description: "Uma adaga de caça com cabo entalhado em ossos de presas raras, perfeita para emboscar criaturas selvagens ou inimigos desprevenidos.",
+    //     image: "https://softstar.s3.amazonaws.com/items/hunter-dagger.png",
+    //     price: "265.00000000",
+    //     createdAt: "2024-07-18T23:55:43.238Z"
+    // },
+    // {
+    //     id: 10,
+    //     name: "Ice Sword",
+    //     description: "Uma espada de cristal de gelo, esculpida nas cavernas congeladas das montanhas mais altas. Cada golpe congela o ar ao redor do alvo, transformando a batalha em um campo de gelo mortal.",
+    //     image: "https://softstar.s3.amazonaws.com/items/ice-sword.png",
+    //     price: "233.00000000",
+    //     createdAt: "2024-07-18T23:55:43.238Z"
+    // }
 ]
 
 export default function ProductList() {
     return (
         <div className={styles.container}>
-            {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-            ))}
+            <div className={styles.productListContainer}>
+                {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+            <LoadButton />
         </div>
     );
 }

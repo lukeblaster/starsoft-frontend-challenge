@@ -20,7 +20,6 @@ export default function RootLayout({
                 <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
             </head>
             <body>
-                <Header />
                 {children}
             </body>
         </html>
