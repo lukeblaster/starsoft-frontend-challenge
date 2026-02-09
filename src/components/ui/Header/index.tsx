@@ -11,7 +11,7 @@ export default function Header() {
             <div className={styles.headerContainer}>
                 <div className={styles.headerLogo}>
                     <Link href="/">
-                        <Image src={logo} alt="Logo" width={100} height={40} />
+                        <Image src={logo} alt="Logo" width={100} height={40} loading='eager' />
                     </Link>
                 </div>
                 <div className={styles.cartContainer}>

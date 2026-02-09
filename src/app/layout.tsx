@@ -1,3 +1,4 @@
+import { Providers } from '@/providers'
 import type { Metadata } from 'next'
 import React from 'react'
 import '../styles/global.scss'
@@ -18,7 +19,9 @@ export default function RootLayout({
                 <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
             </head>
             <body>
-                {children}
+                <Providers>
+                    {children}
+                </Providers>
             </body>
         </html>
     )
