@@ -9,6 +9,14 @@
     width: 100%;
     max-width: 250px;
 
+    @include media-phone {
+        max-width: 200px;
+    }
+
+    @include media-tablet {
+        max-width: 180px;
+    }
+
     &--checkout {
         flex-direction: row;
         background-color: #2B2B2B;
@@ -23,6 +31,16 @@
     flex-shrink: 0;
     border-radius: $border-radius;
     aspect-ratio: 1/1;
+
+    @include media-phone {
+        width: 140px;
+        height: 140px;
+    }
+
+    @include media-tablet {
+        width: 140px;
+        height: 140px;
+    }
 
     &_image {
         width: 100%;
@@ -43,6 +61,10 @@
     flex-direction: column;
     gap: 20px;
 
+    @include media-phone {
+        gap: 12px;
+    }
+
     &_info {
         display: flex;
         flex-direction: column;
@@ -54,6 +76,11 @@
         font-weight: 500;
         color: $text-primary;
         margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     &_description {

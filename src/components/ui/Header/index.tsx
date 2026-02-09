@@ -1,9 +1,9 @@
-import Image from 'next/image'
 import logo from '@/public/images/logo.png'
-import styles from './styles.module.scss'
-import { HugeiconsIcon } from '@hugeicons/react'
 import { ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
+import Image from 'next/image'
 import Link from 'next/link'
+import styles from './styles.module.scss'
 
 export default function Header() {
     return (
@@ -18,7 +18,9 @@ export default function Header() {
                     <Link href="/checkout">
                         <HugeiconsIcon icon={ShoppingBag01FreeIcons} className={styles.cartContainer_cartIcon} />
                     </Link>
-                    <span className={styles.cartContainer_cartCount}>0</span>
+                    <div>
+                        <span className={styles.cartContainer_cartCount}>0</span>
+                    </div>
                 </div>
             </div>
         </header>

@@ -1,13 +1,13 @@
+import { Button } from "@/components/ui/Button";
+import ProductCard from "@/components/ui/ProductCard";
+import { Product } from "@/models";
+import ethereumIcon from "@/public/images/ethereum.svg";
+import { formatPrice } from "@/utils/format-price";
+import { ArrowLeft02FreeIcons } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import Image from "next/image";
 import Link from "next/link";
 import styles from './styles.module.scss';
-import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowLeft02FreeIcons } from "@hugeicons/core-free-icons";
-import { Product } from "@/models";
-import ProductCard from "@/components/ui/ProductCard";
-import { formatPrice } from "@/utils/format-price";
-import ethereumIcon from "@/public/images/ethereum.svg";
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
 
 const products: Product[] = [
     {
@@ -46,20 +46,20 @@ export default function CheckoutPage() {
                         <ProductCard key={product.id} product={product} useCheckoutLayout />
                     ))}
                 </div>
-            </div>
-            <div className={styles.paymentDetails}>
-                <div className={styles.paymentDetails_totalAmount}>
-                    <span className={styles.paymentDetails_totalAmount_label}>Total</span>
-                    <div className={styles.paymentDetails_totalAmount_amountContainer}>
-                        <div className={styles.paymentDetails_totalAmount_amountContainer_iconContainer}>
-                            <Image src={ethereumIcon} alt="Ethereum" width={26} height={26} />
+                <div className={styles.paymentDetails}>
+                    <div className={styles.paymentDetails_totalAmount}>
+                        <span className={styles.paymentDetails_totalAmount_label}>Total</span>
+                        <div className={styles.paymentDetails_totalAmount_amountContainer}>
+                            <div className={styles.paymentDetails_totalAmount_amountContainer_iconContainer}>
+                                <Image src={ethereumIcon} alt="Ethereum" width={26} height={26} />
+                            </div>
+                            <span className={styles.paymentDetails_totalAmount_amountContainer_amount}>{formatPrice("182.00000000")}</span>
                         </div>
-                        <span className={styles.paymentDetails_totalAmount_amountContainer_amount}>{formatPrice("182.00000000")}</span>
                     </div>
                 </div>
-            </div>
-            <div className={styles.paymentDetails_paymentButton}>
-                <Button className={styles.paymentDetails_paymentButton_button}>Finalizar Compra</Button>
+                <div className={styles.paymentDetails_paymentButton}>
+                    <Button className={styles.paymentDetails_paymentButton_button}>Finalizar Compra</Button>
+                </div>
             </div>
         </div>
     )
