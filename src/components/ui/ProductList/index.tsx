@@ -1,4 +1,4 @@
-import { Product } from '@/app/models';
+import { Product } from '@/models';
 import ProductCard from "../ProductCard";
 
 import styles from './styles.module.scss';
@@ -92,7 +92,12 @@ export default function ProductList() {
         <div className={styles.container}>
             <div className={styles.productListContainer}>
                 {products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        useAddtoCartButton
+                        addToCartText="COMPRAR"
+                    />
                 ))}
             </div>
             <LoadButton />
