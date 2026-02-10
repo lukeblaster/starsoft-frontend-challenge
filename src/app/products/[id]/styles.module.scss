@@ -1,0 +1,118 @@
+.container {
+    height: calc(100vh - 130px);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 40px;
+}
+
+.product {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 16px;
+    background-color: $background-card;
+    border-radius: $border-radius;
+    max-width: 1200px;
+
+    &_image {
+        object-fit: contain;
+        max-width: 500px;
+        max-height: 500px;
+        border-radius: $border-radius;
+    }
+
+    &_info {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 16px 0;
+        width: 100%;
+
+        &_name {
+            font-size: 24px;
+            font-weight: 500;
+            color: $text-primary;
+            margin: 0;
+        }
+
+        &_description {
+            font-size: 16px;
+            font-weight: 300;
+            color: $text-muted;
+            margin: 0;
+            max-width: 600px;
+        }
+
+        &_price {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            font-weight: 500;
+            margin: 0;
+            color: $text-primary;
+            line-height: 1;
+
+            &_icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        &_actions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: auto;
+            width: 100%;
+
+            &_quantity {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $background-default;
+                border-radius: $border-radius;
+                width: fit-content;
+                padding: 2px;
+                height: 100%;
+
+                &_button {
+                    background-color: transparent;
+                    height: 36px;
+                    width: 36px;
+                    padding: 0;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    border: none;
+                }
+            }
+
+            &_button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+        }
+    }
+
+
+}
+
+.backButton {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}

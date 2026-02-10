@@ -1,14 +1,15 @@
 "use client";
 
+import ethereumIcon from '@/public/images/ethereum.svg';
+import { formatPrice } from '@/utils/format-price';
+import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import { Button } from '../Button';
 import { ProductCardProps } from './props';
-import { formatPrice } from '@/utils/format-price';
-import ethereumIcon from '@/public/images/ethereum.svg';
 import styles from './styles.module.scss';
-import { useState } from 'react';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { MinusSignFreeIcons, PlusSignFreeIcons, Delete01Icon } from '@hugeicons/core-free-icons';
 
 export default function ProductCard({
     product,
@@ -49,7 +50,9 @@ export default function ProductCard({
                     ${styles.contentContainer_info} 
                     ${useCheckoutLayout ? styles['contentContainer--checkout_info'] : ''}`}
                 >
-                    <h3 className={styles.contentContainer_name}>{product.name}</h3>
+                    <Link href={`/products/${product.id}`}>
+                        <h3 className={styles.contentContainer_name}>{product.name}</h3>
+                    </Link>
                     <span className={`
                         ${styles.contentContainer_description} 
                         ${useCheckoutLayout ? styles['contentContainer--checkout_description'] : ''}`

@@ -21,7 +21,7 @@ export function useProducts() {
         ...result
     } = useInfiniteQuery({
         queryKey,
-        queryFn: ({ pageParam }) => fetchProducts({ page: pageParam as number }),
+        queryFn: ({ pageParam }) => fetchProducts({ page: pageParam }),
         initialPageParam: 1,
         getNextPageParam: (lastPage, allPages) => {
 
