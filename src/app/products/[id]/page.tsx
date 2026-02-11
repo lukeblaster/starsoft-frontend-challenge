@@ -61,7 +61,7 @@ export default function ProductDetailsPage() {
     }
 
     return (
-        <>
+        <div className={styles.container}>
             <Header />
             <Breadcrumb
                 items={[
@@ -69,7 +69,7 @@ export default function ProductDetailsPage() {
                     { label: product.name }
                 ]}
             />
-            <div className={styles.container}>
+            <div className={styles.productContainer}>
                 <div className={styles.product}>
                     <Image src={product.image} alt={product.name} width={500} height={500} loading='eager' className={styles.product_image} />
                     <div className={styles.product_info}>
@@ -88,7 +88,7 @@ export default function ProductDetailsPage() {
                                     <HugeiconsIcon icon={MinusSignFreeIcons} size={16} />
                                 </Button>
                                 <span
-                                    className={styles.product_info_actions_quantity_button}
+                                    className={styles.product_info_actions_quantity_value}
                                 >
                                     {quantity}
                                 </span>
@@ -107,7 +107,9 @@ export default function ProductDetailsPage() {
 
                 </div>
             </div>
-            <Footer />
-        </>
+            <div className={styles.footer}>
+                <Footer />
+            </div>
+        </div>
     );
 }

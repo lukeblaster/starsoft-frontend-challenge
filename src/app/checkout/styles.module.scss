@@ -22,17 +22,6 @@
     justify-content: space-between;
     align-items: center;
 
-    &_backButton {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        background-color: $secondary-color;
-        color: $primary-color;
-        padding: 8px;
-        border-radius: 50%;
-    }
-
     &_title {
         font-size: 24px;
         font-weight: 500;

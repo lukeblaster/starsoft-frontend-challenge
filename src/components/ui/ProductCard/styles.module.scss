@@ -81,7 +81,17 @@
         line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        text-decoration: none !important;
+    }
+
+    &_nameLink:link,
+    &_nameLink:visited,
+    &_nameLink:active {
+        text-decoration: none;
+    }
+
+    &_nameLink:hover {
+        text-decoration: underline;
+        text-decoration-color: $primary-color;
     }
 
     &_description {
@@ -161,14 +171,30 @@
                 padding: 2px;
 
                 &_button {
-                    background-color: transparent;
+                    background-color: transparent !important;
+                    font-weight: 500;
+                    height: 36px !important;
+                    width: 36px !important;
+                    padding: 0 !important;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                    border: none !important;
+                    box-shadow: none !important;
+                    min-width: 36px !important;
+                    min-height: 36px !important;
+                }
+
+                &_value {
                     height: 36px;
                     width: 36px;
                     padding: 0;
                     align-items: center;
                     justify-content: center;
                     display: flex;
-                    border: none;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: $text-primary;
                 }
             }
 

@@ -50,7 +50,7 @@ export default function ProductCard({
                     ${styles.contentContainer_info} 
                     ${useCheckoutLayout ? styles['contentContainer--checkout_info'] : ''}`}
                 >
-                    <Link href={`/products/${product.id}`}>
+                    <Link href={`/products/${product.id}`} className={styles.contentContainer_nameLink}>
                         <h3 className={styles.contentContainer_name}>{product.name}</h3>
                     </Link>
                     <span className={`
@@ -83,7 +83,7 @@ export default function ProductCard({
                                 <HugeiconsIcon icon={MinusSignFreeIcons} size={16} />
                             </Button>
                             <span
-                                className={styles['contentContainer--checkout_actions_quantity_button']}
+                                className={styles['contentContainer--checkout_actions_quantity_value']}
                             >
                                 {quantity}
                             </span>

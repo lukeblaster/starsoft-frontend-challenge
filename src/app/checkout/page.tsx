@@ -3,10 +3,8 @@ import ProductCard from "@/components/ui/ProductCard";
 import { Product } from "@/models";
 import ethereumIcon from "@/public/images/ethereum.svg";
 import { formatPrice } from "@/utils/format-price";
-import { ArrowLeft02FreeIcons } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
-import Link from "next/link";
+import { BackButton } from "./_components/back-button";
 import styles from './styles.module.scss';
 
 const products: Product[] = [
@@ -32,11 +30,7 @@ export default function CheckoutPage() {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <div>
-                    <Link href="/" className={styles.header_backButton}>
-                        <HugeiconsIcon icon={ArrowLeft02FreeIcons} className={styles.header_backButton_icon} />
-                    </Link>
-                </div>
+                <BackButton />
                 <h1 className={styles.header_title}>Mochila de Compras</h1>
                 <div></div>
             </div>
