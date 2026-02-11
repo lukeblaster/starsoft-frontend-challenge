@@ -6,7 +6,6 @@ export async function GET(
     context: { params: Promise<{ id: string }> }
 ) {
     const { id } = await context.params;
-    console.log(id);
     const productId = Number(id);
 
     if (!Number.isFinite(productId)) {
@@ -32,7 +31,7 @@ export async function GET(
 
     const response = await fetch(
         `${apiUrl}/api/v1/products?page=${page}&rows=${rows}&sortBy=${sortBy}&orderBy=${orderBy}`,
-        { next: { revalidate: 3600 } }
+        { next: { revalidate: 0 } }
     );
 
     if (!response.ok) {
