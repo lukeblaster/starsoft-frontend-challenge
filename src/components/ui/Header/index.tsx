@@ -1,11 +1,17 @@
+'use client'
+
 import logo from '@/public/images/logo.png'
 import { ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAppSelector } from '@/store/hooks'
 import styles from './styles.module.scss'
 
 export default function Header() {
+    const cartItems = useAppSelector((state) => state.cart.items)
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0)
+
     return (
         <header>
             <div className={styles.headerContainer}>
@@ -19,7 +25,7 @@ export default function Header() {
                         <HugeiconsIcon icon={ShoppingBag01FreeIcons} className={styles.cartContainer_cartIcon} />
                     </Link>
                     <div>
-                        <span className={styles.cartContainer_cartCount}>0</span>
+                        <span className={styles.cartContainer_cartCount}>{totalItems}</span>
                     </div>
                 </div>
             </div>

@@ -12,11 +12,14 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useAppDispatch } from '@/store/hooks';
+import { addItem } from '@/store/slices/cartSlice';
 import styles from './styles.module.scss';
 
 export default function ProductDetailsPage() {
     const params = useParams<{ id: string }>();
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
     const id = Number(params?.id);
     const isValidId = Number.isFinite(id) && id > 0;
@@ -31,6 +34,12 @@ export default function ProductDetailsPage() {
 
     function decrement() {
         setQuantity(prev => Math.max(1, prev - 1));
+    }
+
+    function handleAddToCart() {
+        if (product) {
+            dispatch(addItem({ product, quantity }));
+        }
     }
 
     if (!isValidId) {
@@ -98,7 +107,10 @@ export default function ProductDetailsPage() {
                                     <HugeiconsIcon icon={PlusSignFreeIcons} size={16} />
                                 </Button>
                             </div>
-                            <Button className={styles.product_info_actions_button}>
+                            <Button 
+                                className={styles.product_info_actions_button}
+                                onClick={handleAddToCart}
+                            >
                                 <HugeiconsIcon icon={ShoppingCart01Icon} />
                                 COMPRAR
                             </Button>

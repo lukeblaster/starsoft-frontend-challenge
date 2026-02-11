@@ -1,32 +1,39 @@
+'use client'
+
 import { Button } from "@/components/ui/Button";
 import ProductCard from "@/components/ui/ProductCard";
-import { Product } from "@/models";
 import ethereumIcon from "@/public/images/ethereum.svg";
 import { formatPrice } from "@/utils/format-price";
 import Image from "next/image";
+import { useAppSelector } from "@/store/hooks";
 import { BackButton } from "./_components/back-button";
 import styles from './styles.module.scss';
 
-const products: Product[] = [
-    {
-        id: 1,
-        name: "Backpack",
-        description: "Uma mochila resistente com compartimentos secretos, ideal para aventureiros que precisam carregar uma variedade de itens essenciais em suas jornadas épicas.",
-        image: "https://softstar.s3.amazonaws.com/items/backpack.png",
-        price: "182.00000000",
-        createdAt: "2024-07-18T23:55:43.238Z"
-    },
-    {
-        id: 2,
-        name: "Boots of Ppeed",
-        description: "Botas feitas de couro fino e tecido élfico, imbuidas com encantamentos mágicos que conferem velocidade sobrenatural a quem as usa, permitindo movimentos ágeis e fugas rápidas.",
-        image: "https://softstar.s3.amazonaws.com/items/boots-of-speed.png",
-        price: "338.00000000",
-        createdAt: "2024-07-18T23:55:43.238Z"
-    },
-]
-
 export default function CheckoutPage() {
+    const cartItems = useAppSelector((state) => state.cart.items);
+
+    const total = cartItems.reduce((sum, item) => {
+        const price = parseFloat(item.product.price);
+        return sum + (price * item.quantity);
+    }, 0);
+
+    if (cartItems.length === 0) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <BackButton />
+                    <h1 className={styles.header_title}>Mochila de Compras</h1>
+                    <div></div>
+                </div>
+                <div className={styles.content}>
+                    <div className={styles.emptyCart}>
+                        <p>Seu carrinho está vazio</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -36,8 +43,12 @@ export default function CheckoutPage() {
             </div>
             <div className={styles.content}>
                 <div className={styles.productsContainer}>
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} useCheckoutLayout />
+                    {cartItems.map((item) => (
+                        <ProductCard 
+                            key={item.product.id} 
+                            product={item.product} 
+                            useCheckoutLayout 
+                        />
                     ))}
                 </div>
                 <div className={styles.paymentDetails}>
@@ -47,7 +58,9 @@ export default function CheckoutPage() {
                             <div className={styles.paymentDetails_totalAmount_amountContainer_iconContainer}>
                                 <Image src={ethereumIcon} alt="Ethereum" width={26} height={26} />
                             </div>
-                            <span className={styles.paymentDetails_totalAmount_amountContainer_amount}>{formatPrice("182.00000000")}</span>
+                            <span className={styles.paymentDetails_totalAmount_amountContainer_amount}>
+                                {formatPrice(total.toFixed(8))}
+                            </span>
                         </div>
                     </div>
                 </div>

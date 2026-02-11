@@ -6,9 +6,11 @@ import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/
 import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '../Button';
 import { ProductCardProps } from './props';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addItem, removeItem, updateQuantity } from '@/store/slices/cartSlice';
 import styles from './styles.module.scss';
 
 export default function ProductCard({
@@ -17,14 +19,40 @@ export default function ProductCard({
     addToCartText = 'COMPRAR',
     useCheckoutLayout = false
 }: ProductCardProps) {
-    const [quantity, setQuantity] = useState(1);
+    const dispatch = useAppDispatch();
+    const cartItem = useAppSelector((state) =>
+        state.cart.items.find(item => item.product.id === product.id)
+    );
+    const [quantity, setQuantity] = useState(cartItem?.quantity || 1);
+
+    useEffect(() => {
+        if (cartItem) {
+            setQuantity(cartItem.quantity);
+        }
+    }, [cartItem]);
 
     function increment() {
-        setQuantity(prev => prev + 1);
+        const newQuantity = quantity + 1;
+        setQuantity(newQuantity);
+        if (useCheckoutLayout && cartItem) {
+            dispatch(updateQuantity({ productId: product.id, quantity: newQuantity }));
+        }
     }
 
     function decrement() {
-        setQuantity(prev => Math.max(1, prev - 1));
+        const newQuantity = Math.max(1, quantity - 1);
+        setQuantity(newQuantity);
+        if (useCheckoutLayout && cartItem) {
+            dispatch(updateQuantity({ productId: product.id, quantity: newQuantity }));
+        }
+    }
+
+    function handleAddToCart() {
+        dispatch(addItem({ product, quantity }));
+    }
+
+    function handleRemoveFromCart() {
+        dispatch(removeItem(product.id));
     }
 
     return (
@@ -71,7 +99,9 @@ export default function ProductCard({
                     }>{formatPrice(product.price)}</span>
                 </div>
 
-                {useAddtoCartButton && <Button>{addToCartText}</Button>}
+                {useAddtoCartButton && (
+                    <Button onClick={handleAddToCart}>{addToCartText}</Button>
+                )}
 
                 {useCheckoutLayout && (
                     <div className={styles['contentContainer--checkout_actions']}>
@@ -94,7 +124,10 @@ export default function ProductCard({
                             </Button>
                         </div>
                         <div>
-                            <Button className={styles['contentContainer--checkout_actions_removeButton']}>
+                            <Button
+                                className={styles['contentContainer--checkout_actions_removeButton']}
+                                onClick={handleRemoveFromCart}
+                            >
                                 <HugeiconsIcon icon={Delete01Icon} />
                             </Button>
                         </div>
