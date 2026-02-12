@@ -1,3 +1,5 @@
+@use '@/styles/_main.scss' as vars;
+
 @mixin media-desktop {
     @media (max-width: 1024px) {
         @content;
@@ -13,5 +15,63 @@
 @mixin media-phone {
     @media (max-width: 480px) {
         @content;
+    }
+}
+
+@mixin skeleton-base {
+    position: relative;
+    overflow: hidden !important;
+    background-color: vars.$secondary-color;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden !important;
+        transform: translateX(-100%);
+        content: '';
+        background: linear-gradient(0.25turn,
+                transparent,
+                vars.$background-default,
+                transparent);
+        pointer-events: none;
+        opacity: 0.8;
+        animation: skeleton-animation 2s infinite;
+    }
+
+    @keyframes skeleton-animation {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        30% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+}
+
+@mixin skeleton-base-secondary {
+    background-color: vars.$background-default !important;
+
+    &::after {
+        background: linear-gradient(0.25turn,
+                transparent,
+                vars.$secondary-color,
+                transparent) !important;
+    }
+}
+
+@mixin skeleton($secondary: false) {
+    @include skeleton-base;
+    border-radius: vars.$border-radius;
+
+    @if $secondary ==true {
+        @include skeleton-base-secondary;
     }
 }

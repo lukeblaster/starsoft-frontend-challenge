@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
         ],
     },
     sassOptions: {
-        additionalData: `@use '@/styles/_main.module.scss' as *; @use '@/styles/_mixins.scss' as *;`,
+        additionalData: `@use '@/styles/_main.scss' as *; @use '@/styles/_mixins.scss' as *;`,
     },
 };
 

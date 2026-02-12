@@ -1,0 +1,51 @@
+.skeleton {
+    &__image {
+        @include skeleton();
+        width: 100%;
+        height: 100%;
+    }
+
+    &__title {
+        @include skeleton();
+        width: 80%;
+        height: 20px;
+    }
+
+    &__description {
+        @include skeleton();
+        width: 100%;
+        height: 14px;
+    }
+
+    &__icon {
+        @include skeleton();
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    &__price {
+        @include skeleton();
+        width: 60px;
+        height: 20px;
+    }
+
+    &__button {
+        @include skeleton();
+        width: 100%;
+        height: $box-height;
+    }
+
+    &__quantity {
+        @include skeleton();
+        width: 120px;
+        height: 40px;
+    }
+
+    &__removeButton {
+        @include skeleton();
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+    }
+}
