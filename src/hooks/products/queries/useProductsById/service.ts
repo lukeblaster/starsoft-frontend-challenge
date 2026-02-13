@@ -2,7 +2,11 @@ import { Product } from "@/models";
 import { UseProductsByIdProps } from "./props";
 
 export async function fetchProductsById({ id }: UseProductsByIdProps): Promise<Product> {
-    const response = await fetch(`/api/products/${id}`);
+    const baseUrl = typeof window === 'undefined'
+        ? process.env.NEXT_PUBLIC_FRONTEND_URL
+        : '';
+
+    const response = await fetch(`${baseUrl}/api/products/${id}`);
 
     if (!response.ok) throw new Error('Erro ao buscar produto');
 

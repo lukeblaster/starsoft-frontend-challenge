@@ -1,4 +1,4 @@
-import { Providers } from '@/providers'
+import Providers from './providers'
 import type { Metadata } from 'next'
 import React from 'react'
 import '../styles/global.scss'
