@@ -1,16 +1,16 @@
 "use client";
 
 import ethereumIcon from '@/public/images/ethereum.svg';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addItem, removeItem, updateQuantity } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
 import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../Button';
 import { ProductCardProps } from './props';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addItem, removeItem, updateQuantity } from '@/store/slices/cartSlice';
 import styles from './styles.module.scss';
 
 export default function ProductCard({

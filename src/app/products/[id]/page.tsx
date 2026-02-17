@@ -1,10 +1,14 @@
-import Header from '@/components/ui/Header';
-import Footer from '@/components/ui/Footer';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import { Suspense } from 'react';
 import Product from './product';
 
-import styles from './styles.module.scss';
+import Footer from '@/components/ui/Footer';
+import Header from '@/components/ui/Header';
+import ProductDetailsSkeleton from './_components/ProductDetailsSkeleton';
+
 import { prefetchProductsById } from '@/hooks/products/queries/useProductsById/prefetch';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
+import styles from './styles.module.scss';
 
 export default async function ProductDetailsPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -16,7 +20,9 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
         <div className={styles.container}>
             <Header />
             <HydrationBoundary state={dehydrate(queryClient)}>
-                <Product />
+                <Suspense fallback={<ProductDetailsSkeleton />}>
+                    <Product />
+                </Suspense>
             </HydrationBoundary>
             <div className={styles.footer}>
                 <Footer />

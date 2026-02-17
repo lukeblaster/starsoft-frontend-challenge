@@ -1,18 +1,18 @@
 "use client";
 
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import { useAppDispatch } from "@/store/hooks";
-import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { useProductsById } from "@/hooks/products/queries";
-import styles from './styles.module.scss';
-import { addItem } from "@/store/slices/cartSlice";
-import Image from "next/image";
-import ethereumIcon from '@/public/images/ethereum.svg';
-import { formatPrice } from "@/utils/format-price";
 import { Button } from "@/components/ui/Button";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { useProductsById } from "@/hooks/products/queries";
+import ethereumIcon from '@/public/images/ethereum.svg';
+import { useAppDispatch } from "@/store/hooks";
+import { addItem } from "@/store/slices/cartSlice";
+import { formatPrice } from "@/utils/format-price";
 import { MinusSignFreeIcons, PlusSignFreeIcons, ShoppingCart01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+import styles from './styles.module.scss';
 
 export default function Product() {
     const [quantity, setQuantity] = useState(1);
@@ -38,8 +38,6 @@ export default function Product() {
         }
     }
 
-    // Como fizemos prefetch no servidor, isLoading será false na primeira renderização
-    // Mas ainda precisamos tratar o caso de erro ou produto não encontrado
     if (error) {
         return (
             <div className={styles.productContainer}>
@@ -106,6 +104,7 @@ export default function Product() {
                     </div>
 
                 </div>
-            </div></>
+            </div>
+        </>
     )
 }
