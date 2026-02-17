@@ -1,5 +1,5 @@
 export interface LoadButtonProps {
-    onClick: () => void;
-    isLoading?: boolean;
-    hasNextPage?: boolean;
+  onClick: () => void;
+  isLoading?: boolean;
+  hasNextPage?: boolean;
 }

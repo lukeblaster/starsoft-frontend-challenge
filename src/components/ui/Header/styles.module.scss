@@ -1,32 +1,32 @@
 .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 32px;
-    border-bottom: 1px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid $border-color;
 }
 
 .headerLogo {
-    width: 100px;
-    height: 40px;
+  width: 100px;
+  height: 40px;
 }
 
 .cartContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    gap: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  gap: 6px;
 
-    &_cartIcon {
-        font-size: 24px;
-        color: $primary-color;
-    }
+  &_cartIcon {
+    font-size: 24px;
+    color: $primary-color;
+  }
 
-    &_cartCount {
-        font-size: 14px;
-        font-weight: 400;
-        color: $text-primary;
-    }
+  &_cartCount {
+    font-size: 14px;
+    font-weight: 400;
+    color: $text-primary;
+  }
 }

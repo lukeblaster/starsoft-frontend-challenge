@@ -1,154 +1,152 @@
 .productContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    gap: 24px;
-    place-self: center;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 24px;
+  place-self: center;
+  flex: 1;
 
-    @include media-desktop {
-        padding: 16px;
-    }
+  @include media-desktop {
+    padding: 16px;
+  }
 
-    @include media-tablet {
-        padding: 16px;
-    }
+  @include media-tablet {
+    padding: 16px;
+  }
 
-    @include media-phone {
-        padding: 16px;
-    }
-
+  @include media-phone {
+    padding: 16px;
+  }
 }
 
 .product {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    place-self: center;
-    gap: 24px;
-    padding: 16px;
-    background-color: $background-card;
-    border-radius: $border-radius;
-    max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  place-self: center;
+  gap: 24px;
+  padding: 16px;
+  background-color: $background-card;
+  border-radius: $border-radius;
+  max-width: 1200px;
 
-    @include media-phone {
-        flex-direction: column;
+  @include media-phone {
+    flex-direction: column;
+  }
+
+  @include media-tablet {
+    flex-direction: column;
+  }
+
+  &_image {
+    object-fit: contain;
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: $border-radius;
+    place-self: center;
+    height: 100%;
+    width: 100%;
+    @include skeleton();
+
+    @include media-desktop {
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: $border-radius;
+      object-fit: cover;
     }
 
     @include media-tablet {
-        flex-direction: column;
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: $border-radius;
+      object-fit: cover;
     }
 
-    &_image {
-        object-fit: contain;
-        max-width: 500px;
-        max-height: 500px;
-        border-radius: $border-radius;
-        place-self: center;
+    @include media-phone {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: $border-radius;
+      object-fit: cover;
+    }
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px 0;
+    width: 100%;
+
+    &_name {
+      margin: 0;
+      height: 24px;
+      width: 30%;
+      @include skeleton();
+    }
+
+    &_description_container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &_description {
+      margin: 0;
+      max-width: 600px;
+      height: 24px;
+      width: 100%;
+      @include skeleton();
+    }
+
+    &_price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      line-height: 1;
+
+      &_icon {
+        width: 30px;
+        height: 30px;
+        @include skeleton();
+        border-radius: 50%;
+      }
+
+      &_value {
+        height: 24px;
+        width: 15%;
+        @include skeleton();
+      }
+    }
+
+    &_actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: auto;
+      width: 100%;
+
+      &_quantity {
+        padding: 2px;
         height: 100%;
+        height: 48px;
+        width: 100%;
+        max-width: 130px;
+        @include skeleton();
+      }
+
+      &_button {
+        gap: 8px;
+        height: 48px;
         width: 100%;
         @include skeleton();
-
-        @include media-desktop {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: $border-radius;
-            object-fit: cover;
-        }
-
-
-        @include media-tablet {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: $border-radius;
-            object-fit: cover;
-        }
-
-        @include media-phone {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: $border-radius;
-            object-fit: cover;
-        }
+      }
     }
-
-    &_info {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        padding: 16px 0;
-        width: 100%;
-
-        &_name {
-            margin: 0;
-            height: 24px;
-            width: 30%;
-            @include skeleton();
-        }
-
-        &_description_container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        &_description {
-            margin: 0;
-            max-width: 600px;
-            height: 24px;
-            width: 100%;
-            @include skeleton();
-        }
-
-        &_price {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0;
-            line-height: 1;
-
-            &_icon {
-                width: 30px;
-                height: 30px;
-                @include skeleton();
-                border-radius: 50%;
-            }
-
-            &_value {
-                height: 24px;
-                width: 15%;
-                @include skeleton();
-            }
-        }
-
-        &_actions {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-top: auto;
-            width: 100%;
-
-            &_quantity {
-                padding: 2px;
-                height: 100%;
-                height: 48px;
-                width: 100%;
-                max-width: 130px;
-                @include skeleton();
-            }
-
-            &_button {
-                gap: 8px;
-                height: 48px;
-                width: 100%;
-                @include skeleton();
-            }
-        }
-    }
+  }
 }

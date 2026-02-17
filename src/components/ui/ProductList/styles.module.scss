@@ -1,39 +1,39 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    place-self: center;
-    width: 100%;
-    gap: 32px;
-    padding: 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  place-self: center;
+  width: 100%;
+  gap: 32px;
+  padding: 16px 16px;
 }
 
 .productListContainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    width: fit-content;
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  width: fit-content;
+  gap: 16px;
 
-    @include media-desktop {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  @include media-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-    @include media-phone {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
+  @include media-phone {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 
-    @include media-tablet {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
+  @include media-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 .loadButtonContainer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: 250px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 250px;
 }

@@ -1,192 +1,188 @@
 .container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .productContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    place-self: center;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  place-self: center;
+  flex: 1;
 
-    @include media-desktop {
-        padding: 16px;
-    }
+  @include media-desktop {
+    padding: 16px;
+  }
 
-    @include media-tablet {
-        padding: 16px;
-    }
+  @include media-tablet {
+    padding: 16px;
+  }
 
-    @include media-phone {
-        padding: 16px;
-    }
-
+  @include media-phone {
+    padding: 16px;
+  }
 }
 
 .product {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: row;
-    place-self: center;
-    gap: 24px;
-    padding: 16px;
-    background-color: $background-card;
-    border-radius: $border-radius;
-    max-width: 1200px;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  place-self: center;
+  gap: 24px;
+  padding: 16px;
+  background-color: $background-card;
+  border-radius: $border-radius;
+  max-width: 1200px;
 
-    @include media-phone {
-        flex-direction: column;
+  @include media-phone {
+    flex-direction: column;
+  }
+
+  @include media-tablet {
+    flex-direction: column;
+  }
+
+  &_image {
+    object-fit: contain;
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: $border-radius;
+    place-self: center;
+
+    @include media-desktop {
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: $border-radius;
+      object-fit: cover;
     }
 
     @include media-tablet {
-        flex-direction: column;
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: $border-radius;
+      object-fit: cover;
     }
 
-    &_image {
-        object-fit: contain;
-        max-width: 500px;
-        max-height: 500px;
-        border-radius: $border-radius;
-        place-self: center;
+    @include media-phone {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: $border-radius;
+      object-fit: cover;
+    }
+  }
 
-        @include media-desktop {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: $border-radius;
-            object-fit: cover;
-        }
+  &_info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px 0;
+    width: 100%;
 
-
-        @include media-tablet {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: $border-radius;
-            object-fit: cover;
-        }
-
-        @include media-phone {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: $border-radius;
-            object-fit: cover;
-        }
+    &_name {
+      font-size: 24px;
+      font-weight: 500;
+      color: $text-primary;
+      margin: 0;
     }
 
-    &_info {
+    &_description {
+      font-size: 16px;
+      font-weight: 300;
+      color: $text-muted;
+      margin: 0;
+      max-width: 600px;
+    }
+
+    &_price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0;
+      color: $text-primary;
+      line-height: 1;
+
+      &_icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &_actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: auto;
+      width: 100%;
+
+      &_quantity {
         display: flex;
-        flex-direction: column;
-        gap: 24px;
-        padding: 16px 0;
-        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: $background-default;
+        border-radius: $border-radius;
+        width: fit-content;
+        padding: 2px;
+        height: 100%;
 
-        &_name {
-            font-size: 24px;
-            font-weight: 500;
-            color: $text-primary;
-            margin: 0;
+        &_button {
+          background-color: transparent !important;
+          height: 36px !important;
+          width: 36px !important;
+          padding: 0 !important;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          border: none !important;
+          box-shadow: none !important;
+          min-width: 36px !important;
+          min-height: 36px !important;
         }
 
-        &_description {
-            font-size: 16px;
-            font-weight: 300;
-            color: $text-muted;
-            margin: 0;
-            max-width: 600px;
+        &_value {
+          height: 36px;
+          width: 36px;
+          padding: 0;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          font-size: 16px;
+          font-weight: 500;
+          color: $text-primary;
         }
+      }
 
-        &_price {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 24px;
-            font-weight: 500;
-            margin: 0;
-            color: $text-primary;
-            line-height: 1;
-
-            &_icon {
-                width: 30px;
-                height: 30px;
-            }
-        }
-
-        &_actions {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-top: auto;
-            width: 100%;
-
-            &_quantity {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: $background-default;
-                border-radius: $border-radius;
-                width: fit-content;
-                padding: 2px;
-                height: 100%;
-
-                &_button {
-                    background-color: transparent !important;
-                    height: 36px !important;
-                    width: 36px !important;
-                    padding: 0 !important;
-                    align-items: center;
-                    justify-content: center;
-                    display: flex;
-                    border: none !important;
-                    box-shadow: none !important;
-                    min-width: 36px !important;
-                    min-height: 36px !important;
-                }
-
-                &_value {
-                    height: 36px;
-                    width: 36px;
-                    padding: 0;
-                    align-items: center;
-                    justify-content: center;
-                    display: flex;
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: $text-primary;
-                }
-            }
-
-            &_button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-            }
-        }
+      &_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
     }
-
-
+  }
 }
 
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
 }
 
 .backButton {
-    border: none;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    text-decoration: underline;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
 }

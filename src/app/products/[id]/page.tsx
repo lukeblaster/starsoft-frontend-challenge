@@ -11,22 +11,22 @@ import { prefetchProductsById } from '@/hooks/products/queries/useProductsById/p
 import styles from './styles.module.scss';
 
 export default async function ProductDetailsPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const productId = Number(id);
+  const { id } = await params;
+  const productId = Number(id);
 
-    const { queryClient } = await prefetchProductsById({ id: productId });
+  const { queryClient } = await prefetchProductsById({ id: productId });
 
-    return (
-        <div className={styles.container}>
-            <Header />
-            <HydrationBoundary state={dehydrate(queryClient)}>
-                <Suspense fallback={<ProductDetailsSkeleton />}>
-                    <Product />
-                </Suspense>
-            </HydrationBoundary>
-            <div className={styles.footer}>
-                <Footer />
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <Header />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Suspense fallback={<ProductDetailsSkeleton />}>
+          <Product />
+        </Suspense>
+      </HydrationBoundary>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
+    </div>
+  );
 }

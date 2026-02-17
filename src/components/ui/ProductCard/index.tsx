@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import ethereumIcon from '@/public/images/ethereum.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -8,7 +8,7 @@ import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/
 import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../Button';
 import { ProductCardProps } from './props';
 import styles from './styles.module.scss';
@@ -17,19 +17,13 @@ export default function ProductCard({
     product,
     useAddtoCartButton,
     addToCartText = 'COMPRAR',
-    useCheckoutLayout = false
+    useCheckoutLayout = false,
 }: ProductCardProps) {
     const dispatch = useAppDispatch();
     const cartItem = useAppSelector((state) =>
-        state.cart.items.find(item => item.product.id === product.id)
+        state.cart.items.find((item) => item.product.id === product.id)
     );
     const [quantity, setQuantity] = useState(cartItem?.quantity || 1);
-
-    useEffect(() => {
-        if (cartItem) {
-            setQuantity(cartItem.quantity);
-        }
-    }, [cartItem]);
 
     function increment() {
         const newQuantity = quantity + 1;
@@ -56,52 +50,63 @@ export default function ProductCard({
     }
 
     return (
-        <div className={`${styles.container} ${useCheckoutLayout ? styles['container--checkout'] : ''}`}>
-            <div className={`${styles.imageContainer} ${useCheckoutLayout ? styles['imageContainer--checkout'] : ''}`}>
+        <div
+            className={`${styles.container} ${useCheckoutLayout ? styles['container--checkout'] : ''}`}
+        >
+            <div
+                className={`${styles.imageContainer} ${useCheckoutLayout ? styles['imageContainer--checkout'] : ''}`}
+            >
                 <>
                     <Image
                         src={product.image}
                         alt={product.name}
-                        width={500} height={500}
+                        width={500}
+                        height={500}
                         className={`
                         ${styles.imageContainer_image} 
-                        ${useCheckoutLayout ? styles['imageContainer_image--checkout'] : ''}`
-                        }
+                        ${useCheckoutLayout ? styles['imageContainer_image--checkout'] : ''}`}
                     />
                 </>
             </div>
-            <div className={`
+            <div
+                className={`
                 ${styles.contentContainer} 
-                ${useCheckoutLayout ? styles['contentContainer--checkout'] : ''}`
-            }>
-                <div className={`
+                ${useCheckoutLayout ? styles['contentContainer--checkout'] : ''}`}
+            >
+                <div
+                    className={`
                     ${styles.contentContainer_info} 
                     ${useCheckoutLayout ? styles['contentContainer--checkout_info'] : ''}`}
                 >
                     <Link href={`/products/${product.id}`} className={styles.contentContainer_nameLink}>
                         <h3 className={styles.contentContainer_name}>{product.name}</h3>
                     </Link>
-                    <span className={`
+                    <span
+                        className={`
                         ${styles.contentContainer_description} 
-                        ${useCheckoutLayout ? styles['contentContainer--checkout_description'] : ''}`
-                    }>
+                        ${useCheckoutLayout ? styles['contentContainer--checkout_description'] : ''}`}
+                    >
                         {product.description}
                     </span>
                 </div>
                 <div className={styles.contentContainer_priceContainer}>
-                    <Image src={ethereumIcon} alt="Ethereum" className={`
+                    <Image
+                        src={ethereumIcon}
+                        alt="Ethereum"
+                        className={`
                         ${styles.contentContainer_priceContainer_icon} 
-                        ${useCheckoutLayout ? styles['contentContainer--checkout_priceContainer_icon'] : ''}`
-                    } />
-                    <span className={`
+                        ${useCheckoutLayout ? styles['contentContainer--checkout_priceContainer_icon'] : ''}`}
+                    />
+                    <span
+                        className={`
                         ${styles.contentContainer_priceContainer_price} 
-                        ${useCheckoutLayout ? styles['contentContainer--checkout_priceContainer_price'] : ''}`
-                    }>{formatPrice(product.price)}</span>
+                        ${useCheckoutLayout ? styles['contentContainer--checkout_priceContainer_price'] : ''}`}
+                    >
+                        {formatPrice(product.price)}
+                    </span>
                 </div>
 
-                {useAddtoCartButton && (
-                    <Button onClick={handleAddToCart}>{addToCartText}</Button>
-                )}
+                {useAddtoCartButton && <Button onClick={handleAddToCart}>{addToCartText}</Button>}
 
                 {useCheckoutLayout && (
                     <div className={styles['contentContainer--checkout_actions']}>
@@ -112,14 +117,13 @@ export default function ProductCard({
                             >
                                 <HugeiconsIcon icon={MinusSignFreeIcons} size={16} />
                             </Button>
-                            <span
-                                className={styles['contentContainer--checkout_actions_quantity_value']}
-                            >
+                            <span className={styles['contentContainer--checkout_actions_quantity_value']}>
                                 {quantity}
                             </span>
                             <Button
                                 className={styles['contentContainer--checkout_actions_quantity_button']}
-                                onClick={increment}>
+                                onClick={increment}
+                            >
                                 <HugeiconsIcon icon={PlusSignFreeIcons} size={16} />
                             </Button>
                         </div>
@@ -134,6 +138,6 @@ export default function ProductCard({
                     </div>
                 )}
             </div>
-        </div >
-    )
+        </div>
+    );
 }

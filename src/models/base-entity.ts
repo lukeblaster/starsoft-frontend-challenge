@@ -1,4 +1,4 @@
 export interface BaseEntity {
-    createdAt?: string;
-    updatedAt?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }

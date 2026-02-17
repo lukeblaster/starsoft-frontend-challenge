@@ -1,9 +1,8 @@
-import { Product } from "@/models";
-
+import { Product } from '@/models';
 
 export interface ProductCardProps {
-    product: Product;
-    useAddtoCartButton?: boolean;
-    addToCartText?: string;
-    useCheckoutLayout?: boolean;
+  product: Product;
+  useAddtoCartButton?: boolean;
+  addToCartText?: string;
+  useCheckoutLayout?: boolean;
 }

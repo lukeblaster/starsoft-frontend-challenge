@@ -1,14 +1,14 @@
 .breadcrumbSkeleton {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    padding: 8px 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 8px 40px;
 
-    &_item {
-        width: 100px;
-        height: 20px;
-        border-radius: 5px;
+  &_item {
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
 
-        @include skeleton();
-    }
+    @include skeleton();
+  }
 }

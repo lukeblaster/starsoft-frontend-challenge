@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-$primary-color: #FF8310;
+$primary-color: #ff8310;
 $primary-contrast-text: white;
 $primary-ghost-color: #232323;
 
@@ -8,14 +8,15 @@ $secondary-color: #393939;
 $secondary-contrast-text: white;
 
 $background-default: #232323;
-$background-card: #191A20;
+$background-card: #191a20;
 
 $text-primary: #ffffff;
-$text-muted: #CCCCCC;
+$text-muted: #cccccc;
 
 $card-color: #362154;
 
-$font-primary: 'Poppins',
+$font-primary:
+  'Poppins',
   system-ui,
   -apple-system,
   sans-serif;
