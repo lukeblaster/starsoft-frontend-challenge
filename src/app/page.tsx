@@ -1,7 +1,7 @@
 import Footer from '../components/ui/Footer';
 import Header from '../components/ui/Header';
 import ProductList from '../components/ui/ProductList';
-import styles from './page.module.scss';
+import styles from './styles.module.scss';
 
 export default function Page() {
   return (

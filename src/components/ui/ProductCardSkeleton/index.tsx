@@ -2,26 +2,26 @@ import mainStyles from '@/components/ui/ProductCard/styles.module.scss';
 import skeletonStyles from './styles.module.scss';
 
 interface ProductCardSkeletonProps {
-  useCheckoutLayout?: boolean;
+  useCartLayout?: boolean;
 }
 
 export default function ProductCardSkeleton({
-  useCheckoutLayout = false,
+  useCartLayout = false,
 }: ProductCardSkeletonProps) {
   return (
     <div
-      className={`${mainStyles.container} ${useCheckoutLayout ? mainStyles['container--checkout'] : ''}`}
+      className={`${mainStyles.container} ${useCartLayout ? mainStyles['container--cart'] : ''}`}
     >
       <div
-        className={`${mainStyles.imageContainer} ${useCheckoutLayout ? mainStyles['imageContainer--checkout'] : ''}`}
+        className={`${mainStyles.imageContainer} ${useCartLayout ? mainStyles['imageContainer--cart'] : ''}`}
       >
         <div className={skeletonStyles.skeleton__image} />
       </div>
       <div
-        className={`${mainStyles.contentContainer} ${useCheckoutLayout ? mainStyles['contentContainer--checkout'] : ''}`}
+        className={`${mainStyles.contentContainer} ${useCartLayout ? mainStyles['contentContainer--cart'] : ''}`}
       >
         <div
-          className={`${mainStyles.contentContainer_info} ${useCheckoutLayout ? mainStyles['contentContainer--checkout_info'] : ''}`}
+          className={`${mainStyles.contentContainer_info} ${useCartLayout ? mainStyles['contentContainer--cart_info'] : ''}`}
         >
           <div className={skeletonStyles.skeleton__title} />
           <div className={skeletonStyles.skeleton__description} />
@@ -30,9 +30,9 @@ export default function ProductCardSkeleton({
           <div className={skeletonStyles.skeleton__icon} />
           <div className={skeletonStyles.skeleton__price} />
         </div>
-        {!useCheckoutLayout && <div className={skeletonStyles.skeleton__button} />}
-        {useCheckoutLayout && (
-          <div className={mainStyles['contentContainer--checkout_actions']}>
+        {!useCartLayout && <div className={skeletonStyles.skeleton__button} />}
+        {useCartLayout && (
+          <div className={mainStyles['contentContainer--cart_actions']}>
             <div className={skeletonStyles.skeleton__quantity} />
             <div className={skeletonStyles.skeleton__removeButton} />
           </div>

@@ -1,11 +1,11 @@
 'use client';
 
 import logo from '@/public/images/logo.png';
+import { useAppSelector } from '@/store/hooks';
 import { ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useAppSelector } from '@/store/hooks';
 import styles from './styles.module.scss';
 
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
           </Link>
         </div>
         <div className={styles.cartContainer}>
-          <Link href="/checkout">
+          <Link href="/cart">
             <HugeiconsIcon
               icon={ShoppingBag01FreeIcons}
               className={styles.cartContainer_cartIcon}

@@ -17,7 +17,7 @@ export default function ProductCard({
     product,
     useAddtoCartButton,
     addToCartText = 'COMPRAR',
-    useCheckoutLayout = false,
+    useCartLayout = false,
 }: ProductCardProps) {
     const dispatch = useAppDispatch();
     const cartItem = useAppSelector((state) =>
@@ -28,7 +28,7 @@ export default function ProductCard({
     function increment() {
         const newQuantity = quantity + 1;
         setQuantity(newQuantity);
-        if (useCheckoutLayout && cartItem) {
+        if (useCartLayout && cartItem) {
             dispatch(updateQuantity({ productId: product.id, quantity: newQuantity }));
         }
     }
@@ -36,7 +36,7 @@ export default function ProductCard({
     function decrement() {
         const newQuantity = Math.max(1, quantity - 1);
         setQuantity(newQuantity);
-        if (useCheckoutLayout && cartItem) {
+        if (useCartLayout && cartItem) {
             dispatch(updateQuantity({ productId: product.id, quantity: newQuantity }));
         }
     }
@@ -51,10 +51,10 @@ export default function ProductCard({
 
     return (
         <div
-            className={`${styles.container} ${useCheckoutLayout ? styles['container--checkout'] : ''}`}
+            className={`${styles.container} ${useCartLayout ? styles['container--cart'] : ''}`}
         >
             <div
-                className={`${styles.imageContainer} ${useCheckoutLayout ? styles['imageContainer--checkout'] : ''}`}
+                className={`${styles.imageContainer} ${useCartLayout ? styles['imageContainer--cart'] : ''}`}
             >
                 <>
                     <Image
@@ -64,19 +64,19 @@ export default function ProductCard({
                         height={500}
                         className={`
                         ${styles.imageContainer_image} 
-                        ${useCheckoutLayout ? styles['imageContainer_image--checkout'] : ''}`}
+                        ${useCartLayout ? styles['imageContainer_image--cart'] : ''}`}
                     />
                 </>
             </div>
             <div
                 className={`
                 ${styles.contentContainer} 
-                ${useCheckoutLayout ? styles['contentContainer--checkout'] : ''}`}
+                ${useCartLayout ? styles['contentContainer--cart'] : ''}`}
             >
                 <div
                     className={`
                     ${styles.contentContainer_info} 
-                    ${useCheckoutLayout ? styles['contentContainer--checkout_info'] : ''}`}
+                    ${useCartLayout ? styles['contentContainer--cart_info'] : ''}`}
                 >
                     <Link href={`/products/${product.id}`} className={styles.contentContainer_nameLink}>
                         <h3 className={styles.contentContainer_name}>{product.name}</h3>
@@ -84,7 +84,7 @@ export default function ProductCard({
                     <span
                         className={`
                         ${styles.contentContainer_description} 
-                        ${useCheckoutLayout ? styles['contentContainer--checkout_description'] : ''}`}
+                        ${useCartLayout ? styles['contentContainer--cart_description'] : ''}`}
                     >
                         {product.description}
                     </span>
@@ -95,12 +95,12 @@ export default function ProductCard({
                         alt="Ethereum"
                         className={`
                         ${styles.contentContainer_priceContainer_icon} 
-                        ${useCheckoutLayout ? styles['contentContainer--checkout_priceContainer_icon'] : ''}`}
+                        ${useCartLayout ? styles['contentContainer--cart_priceContainer_icon'] : ''}`}
                     />
                     <span
                         className={`
                         ${styles.contentContainer_priceContainer_price} 
-                        ${useCheckoutLayout ? styles['contentContainer--checkout_priceContainer_price'] : ''}`}
+                        ${useCartLayout ? styles['contentContainer--cart_priceContainer_price'] : ''}`}
                     >
                         {formatPrice(product.price)}
                     </span>
@@ -108,20 +108,20 @@ export default function ProductCard({
 
                 {useAddtoCartButton && <Button onClick={handleAddToCart}>{addToCartText}</Button>}
 
-                {useCheckoutLayout && (
-                    <div className={styles['contentContainer--checkout_actions']}>
-                        <div className={styles['contentContainer--checkout_actions_quantity']}>
+                {useCartLayout && (
+                    <div className={styles['contentContainer--cart_actions']}>
+                        <div className={styles['contentContainer--cart_actions_quantity']}>
                             <Button
-                                className={styles['contentContainer--checkout_actions_quantity_button']}
+                                className={styles['contentContainer--cart_actions_quantity_button']}
                                 onClick={decrement}
                             >
                                 <HugeiconsIcon icon={MinusSignFreeIcons} size={16} />
                             </Button>
-                            <span className={styles['contentContainer--checkout_actions_quantity_value']}>
+                            <span className={styles['contentContainer--cart_actions_quantity_value']}>
                                 {quantity}
                             </span>
                             <Button
-                                className={styles['contentContainer--checkout_actions_quantity_button']}
+                                className={styles['contentContainer--cart_actions_quantity_button']}
                                 onClick={increment}
                             >
                                 <HugeiconsIcon icon={PlusSignFreeIcons} size={16} />
@@ -129,7 +129,7 @@ export default function ProductCard({
                         </div>
                         <div>
                             <Button
-                                className={styles['contentContainer--checkout_actions_removeButton']}
+                                className={styles['contentContainer--cart_actions_removeButton']}
                                 onClick={handleRemoveFromCart}
                             >
                                 <HugeiconsIcon icon={Delete01Icon} />

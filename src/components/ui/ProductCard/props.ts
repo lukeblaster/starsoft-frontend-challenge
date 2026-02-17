@@ -4,5 +4,5 @@ export interface ProductCardProps {
   product: Product;
   useAddtoCartButton?: boolean;
   addToCartText?: string;
-  useCheckoutLayout?: boolean;
+  useCartLayout?: boolean;
 }

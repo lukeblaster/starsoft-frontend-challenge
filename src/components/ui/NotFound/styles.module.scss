@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 24px;
+    padding: 24px;
+    background-color: $background-card;
+    border-radius: $border-radius;
+    margin: 0;
+  
+    &_title {
+      font-size: 24px;
+      font-weight: 500;
+      color: $text-primary;
+      margin: 0;
+    }
+  
+    &_message {
+      font-size: 16px;
+      font-weight: 300;
+      color: $text-muted;
+      text-align: center;
+      margin: 0;
+      max-width: 300px;
+    }
+  }

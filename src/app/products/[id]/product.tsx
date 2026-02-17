@@ -14,8 +14,9 @@ import {
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useState } from 'react';
+import ErrorComponent from './error';
 import styles from './styles.module.scss';
 
 export default function Product() {
@@ -23,9 +24,8 @@ export default function Product() {
     const { id } = useParams();
     const productId = Number(id);
 
-    const { data: product, isLoading, error } = useProductsById({ id: productId });
+    const { data: product, error } = useProductsById({ id: productId });
 
-    const router = useRouter();
     const dispatch = useAppDispatch();
 
     function increment() {
@@ -42,21 +42,7 @@ export default function Product() {
         }
     }
 
-    if (error) {
-        return (
-            <div className={styles.productContainer}>
-                <div className={styles.errorContainer}>
-                    <h2>Produto não encontrado</h2>
-                    <p>O produto que você está procurando não existe ou foi removido.</p>
-                    <Button onClick={() => router.push('/')}>Voltar para a página inicial</Button>
-                </div>
-            </div>
-        );
-    }
-
-    if (isLoading || !product) {
-        return <div className={styles.productContainer}>Carregando...</div>;
-    }
+    if (error) return <ErrorComponent />;
 
     return (
         <>
