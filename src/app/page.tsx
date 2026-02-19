@@ -4,13 +4,13 @@ import ProductList from '../components/ui/ProductList';
 import styles from './styles.module.scss';
 
 export default function Page() {
-  return (
-    <>
-      <Header />
-      <div className={styles.pageContainer}>
-        <ProductList />
-      </div>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <div className={styles.pageContainer}>
+                <ProductList />
+            </div>
+            <Footer />
+        </>
+    );
 }

@@ -2,6 +2,7 @@
 'use client';
 
 // Since QueryClientProvider relies on useContext under the hood, we have to put 'use client' on top
+import PageTransition from '@/components/ui/PageTransition';
 import { store } from '@/store';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
@@ -15,8 +16,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   return (
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </Provider>
+    <PageTransition>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </Provider>
+    </PageTransition>
   );
 }
