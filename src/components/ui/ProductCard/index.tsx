@@ -56,7 +56,7 @@ export default function ProductCard({
             <div
                 className={`${styles.imageContainer} ${useCartLayout ? styles['imageContainer--cart'] : ''}`}
             >
-                <>
+                <Link href={`/products/${product.id}`}>
                     <Image
                         src={product.image}
                         alt={product.name}
@@ -66,7 +66,7 @@ export default function ProductCard({
                         ${styles.imageContainer_image} 
                         ${useCartLayout ? styles['imageContainer_image--cart'] : ''}`}
                     />
-                </>
+                </Link>
             </div>
             <div
                 className={`

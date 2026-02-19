@@ -25,7 +25,13 @@ export default function LoadButton({
           />
         </motion.div>
       )}
-      <Button isSecondary className={styles.button} onClick={() => onClick()} disabled={isLoading}>
+      <Button
+        className={styles.button}
+        onClick={() => onClick()}
+        disabled={isLoading || !hasNextPage}
+        isloading={isLoading}
+        isSecondary
+      >
         {isLoading ? 'Carregando...' : hasNextPage ? 'Carregar mais' : 'Você já viu tudo'}
       </Button>
     </div>

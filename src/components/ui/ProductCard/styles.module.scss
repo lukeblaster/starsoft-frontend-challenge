@@ -22,13 +22,18 @@
     flex-direction: row;
     background-color: #2b2b2b;
     max-width: none;
-  }
-}
 
-.container:hover {
-  background-color: $background-card-hover;
-  cursor: pointer;
-  outline: 1px solid $border-color;
+    &:hover {
+      background-color: #2b2b2b !important;
+      outline: none !important;
+      cursor: default !important;
+    }
+  }
+
+  &:hover {
+    background-color: $background-card-hover;
+    outline: 1px solid $border-color;
+  }
 }
 
 .imageContainer {
@@ -86,17 +91,18 @@
     line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    transition: color 15ms ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 
   &_nameLink:link,
   &_nameLink:visited,
-  &_nameLink:active {
-    text-decoration: none;
-  }
-
+  &_nameLink:active,
   &_nameLink:hover {
-    text-decoration: underline;
-    text-decoration-color: $primary-color;
+    text-decoration: none;
   }
 
   &_description {
