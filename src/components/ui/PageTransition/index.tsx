@@ -19,7 +19,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ type: 'tween', duration: 0.25, }}
+            transition={{ type: 'spring', duration: 0.35, ease: 'easeInOut' }}
         >
             {children}
         </motion.div>
