@@ -8,6 +8,7 @@
   height: 100%;
   width: 100%;
   max-width: 250px;
+  transition: outline 15ms ease-in-out;
 
   @include media-phone {
     max-width: 200px;
@@ -22,6 +23,12 @@
     background-color: #2b2b2b;
     max-width: none;
   }
+}
+
+.container:hover {
+  background-color: $background-card-hover;
+  cursor: pointer;
+  outline: 1px solid $border-color;
 }
 
 .imageContainer {
