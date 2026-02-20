@@ -1,9 +1,9 @@
 'use client';
 
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { addItem, removeItem, updateQuantity } from '@/app/store/slices/cartSlice';
 import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addItem, removeItem, updateQuantity } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
 import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -11,6 +11,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '../Button';
+import AddToCartButton from './components/AddToCartButton';
 import { ProductCardProps } from './props';
 import styles from './styles.module.scss';
 
@@ -66,7 +67,7 @@ export default function ProductCard({
                         alt={product.name}
                         width={150}
                         height={150}
-                        quality={100}
+                        quality={75}
                         loading="eager"
                         priority
                         fetchPriority="high"
@@ -115,14 +116,7 @@ export default function ProductCard({
                     </span>
                 </div>
 
-                {useAddtoCartButton && (
-                    <Button
-                        onClick={handleAddToCart}
-                        className={`${styles.contentContainer_button}`}
-                    >
-                        {text}
-                    </Button>
-                )}
+                {useAddtoCartButton && <AddToCartButton onClick={handleAddToCart} text={text} />}
 
                 {useCartLayout && (
                     <div className={styles['contentContainer--cart_actions']}>

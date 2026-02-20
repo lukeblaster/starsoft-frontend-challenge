@@ -2,12 +2,11 @@
 
 import { useProducts } from '@/hooks/products/queries/useProducts';
 import { Product } from '@/models';
-import dynamic from 'next/dynamic';
 
-const ProductCard = dynamic(() => import('../ProductCard'));
-const LoadButton = dynamic(() => import('../LoadButton'));
-const ProductListSkeleton = dynamic(() => import('../ProductListSkeleton'));
-const ProductListError = dynamic(() => import('./error'));
+import LoadButton from '../LoadButton';
+import ProductCard from '../ProductCard';
+import ProductListSkeleton from '../ProductListSkeleton';
+import ProductListError from './error';
 
 import styles from './styles.module.scss';
 

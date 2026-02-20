@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
         hostname: 'softstar.s3.amazonaws.com',
       },
     ],
+    qualities: [75, 100],
   },
   sassOptions: {
     additionalData: `@use '@/styles/_main.scss' as *; @use '@/styles/_mixins.scss' as *;`,

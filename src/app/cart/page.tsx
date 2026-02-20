@@ -1,17 +1,15 @@
 'use client';
 
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { clearCart } from '@/app/store/slices/cartSlice';
+import { Button } from '@/components/ui/Button';
+import ProductCard from '@/components/ui/ProductCard';
 import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { clearCart } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useMemo } from 'react';
-
-const ProductCard = dynamic(() => import('@/components/ui/ProductCard'));
-const Button = dynamic(() => import('@/components/ui/Button').then((mod) => mod.Button));
-const BackButton = dynamic(() => import('./_components/back-button').then((mod) => mod.BackButton));
+import { BackButton } from './_components/back-button';
 
 import styles from './styles.module.scss';
 
