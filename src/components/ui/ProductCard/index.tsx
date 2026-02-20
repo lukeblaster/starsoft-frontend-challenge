@@ -1,5 +1,6 @@
 'use client';
 
+import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addItem, removeItem, updateQuantity } from '@/store/slices/cartSlice';
@@ -16,8 +17,8 @@ import styles from './styles.module.scss';
 export default function ProductCard({
     product,
     useAddtoCartButton,
-    primaryText = 'COMPRAR',
-    secondaryText = 'ADICIONADO AO CARRINHO',
+    primaryText = 'Comprar',
+    secondaryText = 'Adicionado ao carrinho',
     useCartLayout = false,
 }: ProductCardProps) {
     const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ export default function ProductCard({
         state.cart.items.find((item) => item.product.id === product.id)
     );
     const [quantity, setQuantity] = useState(cartItem?.quantity || 1);
-    const [useSecondaryText, setUseSecondaryText] = useState(false);
+    const { text, handleChangeText } = useHandleChangeText({ primaryText, secondaryText, duration: 1000 });
 
     function increment() {
         const newQuantity = quantity + 1;
@@ -45,15 +46,11 @@ export default function ProductCard({
 
     function handleAddToCart() {
         dispatch(addItem({ product, quantity }));
+        handleChangeText();
     }
 
     function handleRemoveFromCart() {
         dispatch(removeItem(product.id));
-    }
-
-    function handleChangeButtonText() {
-        setUseSecondaryText(true);
-        setTimeout(() => setUseSecondaryText(false), 1500);
     }
 
     return (
@@ -115,18 +112,10 @@ export default function ProductCard({
 
                 {useAddtoCartButton && (
                     <Button
-                        onClick={() => {
-                            handleAddToCart();
-                            handleChangeButtonText();
-                        }}
+                        onClick={handleAddToCart}
                         className={`${styles.contentContainer_button}`}
                     >
-                        <span className={`${useSecondaryText ? styles['contentContainer_button--hidden'] : ''}`}>
-                            {primaryText}
-                        </span>
-                        <span className={`${!useSecondaryText ? styles['contentContainer_button--hidden'] : styles['contentContainer_button--secondaryText']}`}>
-                            {secondaryText}
-                        </span>
+                        {text}
                     </Button>
                 )}
 

@@ -3,6 +3,7 @@
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import { useProductsById } from '@/hooks/products/queries';
+import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
 import { useAppDispatch } from '@/store/hooks';
 import { addItem } from '@/store/slices/cartSlice';
@@ -27,6 +28,11 @@ export default function Product() {
     const { data: product, error } = useProductsById({ id: productId });
 
     const dispatch = useAppDispatch();
+    const { text, handleChangeText } = useHandleChangeText({
+        primaryText: 'Comprar',
+        secondaryText: 'Adicionado ao carrinho',
+        duration: 1000
+    });
 
     function increment() {
         setQuantity((prev) => prev + 1);
@@ -39,6 +45,7 @@ export default function Product() {
     function handleAddToCart() {
         if (product) {
             dispatch(addItem({ product, quantity }));
+            handleChangeText();
         }
     }
 
@@ -76,7 +83,7 @@ export default function Product() {
                             </div>
                             <Button className={styles.product_info_actions_button} onClick={handleAddToCart}>
                                 <HugeiconsIcon icon={ShoppingCart01Icon} />
-                                COMPRAR
+                                {text}
                             </Button>
                         </div>
                     </div>
