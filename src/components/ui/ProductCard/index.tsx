@@ -5,7 +5,7 @@ import ethereumIcon from '@/public/images/ethereum.svg';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addItem, removeItem, updateQuantity } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
-import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/core-free-icons';
+import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -64,8 +64,12 @@ export default function ProductCard({
                     <Image
                         src={product.image}
                         alt={product.name}
-                        width={500}
-                        height={500}
+                        width={150}
+                        height={150}
+                        quality={100}
+                        loading="eager"
+                        priority
+                        fetchPriority="high"
                         className={`
                         ${styles.imageContainer_image} 
                         ${useCartLayout ? styles['imageContainer_image--cart'] : ''}`}
@@ -97,6 +101,7 @@ export default function ProductCard({
                     <Image
                         src={ethereumIcon}
                         alt="Ethereum"
+                        priority
                         className={`
                         ${styles.contentContainer_priceContainer_icon} 
                         ${useCartLayout ? styles['contentContainer--cart_priceContainer_icon'] : ''}`}

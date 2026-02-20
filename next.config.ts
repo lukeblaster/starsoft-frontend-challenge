@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   sassOptions: {
     additionalData: `@use '@/styles/_main.scss' as *; @use '@/styles/_mixins.scss' as *;`,
   },
+  experimental: {
+    optimizePackageImports: ['@hugeicons/react', '@hugeicons/core-free-icons'],
+  },
 };
 
 export default nextConfig;

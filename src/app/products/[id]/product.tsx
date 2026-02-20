@@ -1,24 +1,28 @@
 'use client';
 
-import Breadcrumb from '@/components/ui/Breadcrumb';
-import { Button } from '@/components/ui/Button';
 import { useProductsById } from '@/hooks/products/queries';
 import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
 import { useAppDispatch } from '@/store/hooks';
 import { addItem } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
-import {
-    MinusSignFreeIcons,
-    PlusSignFreeIcons,
-    ShoppingCart01Icon,
-} from '@hugeicons/core-free-icons';
+import { MinusSignFreeIcons, PlusSignFreeIcons, ShoppingCart01Icon } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
-import ErrorComponent from './error';
 import styles from './styles.module.scss';
+
+const ErrorComponent = dynamic(() => import('./error').then((mod) => mod.default), {
+    ssr: false,
+});
+const Breadcrumb = dynamic(() => import('@/components/ui/Breadcrumb'), {
+    ssr: false,
+});
+const Button = dynamic(() => import('@/components/ui/Button').then((mod) => mod.Button), {
+    ssr: false,
+});
 
 export default function Product() {
     const [quantity, setQuantity] = useState(1);

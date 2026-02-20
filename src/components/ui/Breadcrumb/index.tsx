@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import { ArrowRight01FreeIcons } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowRight01FreeIcons } from '@hugeicons/core-free-icons';
+import Link from 'next/link';
 import styles from './styles.module.scss';
 
 interface BreadcrumbItem {
@@ -20,7 +20,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           const isLast = index === items.length - 1;
 
           return (
-            <li key={index} className={styles.breadcrumb_item}>
+            <li key={item.href} className={styles.breadcrumb_item}>
               {isLast ? (
                 <span className={styles.breadcrumb_current} aria-current="page">
                   {item.label}

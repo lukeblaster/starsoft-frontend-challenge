@@ -19,7 +19,7 @@ export function useProgressAnimation({ isLoading }: UseProgressAnimationProps) {
             animation.current?.stop();
             width.set('0%');
         };
-    }, [isLoading]);
+    }, [isLoading, animate, width]);
 
     return { scope, width };
 }

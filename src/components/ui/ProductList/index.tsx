@@ -1,11 +1,14 @@
 'use client';
-import { Product } from '@/models';
-import ProductCard from '../ProductCard';
 
 import { useProducts } from '@/hooks/products/queries/useProducts';
-import LoadButton from '../LoadButton';
-import ProductListSkeleton from '../ProductListSkeleton';
-import ProductListError from './error';
+import { Product } from '@/models';
+import dynamic from 'next/dynamic';
+
+const ProductCard = dynamic(() => import('../ProductCard'));
+const LoadButton = dynamic(() => import('../LoadButton'));
+const ProductListSkeleton = dynamic(() => import('../ProductListSkeleton'));
+const ProductListError = dynamic(() => import('./error'));
+
 import styles from './styles.module.scss';
 
 export default function ProductList() {

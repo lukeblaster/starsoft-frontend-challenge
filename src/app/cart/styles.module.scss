@@ -42,18 +42,6 @@
   flex: 1;
 }
 
-.emptyCart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  font-weight: bold;
-  font-size: 16px;
-  color: $text-muted;
-}
-
 .productsContainer {
   display: flex;
   flex-direction: column;
