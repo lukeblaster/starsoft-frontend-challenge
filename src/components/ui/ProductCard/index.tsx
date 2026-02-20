@@ -16,7 +16,8 @@ import styles from './styles.module.scss';
 export default function ProductCard({
     product,
     useAddtoCartButton,
-    addToCartText = 'COMPRAR',
+    primaryText = 'COMPRAR',
+    secondaryText = 'ADICIONADO AO CARRINHO',
     useCartLayout = false,
 }: ProductCardProps) {
     const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ export default function ProductCard({
         state.cart.items.find((item) => item.product.id === product.id)
     );
     const [quantity, setQuantity] = useState(cartItem?.quantity || 1);
+    const [useSecondaryText, setUseSecondaryText] = useState(false);
 
     function increment() {
         const newQuantity = quantity + 1;
@@ -47,6 +49,11 @@ export default function ProductCard({
 
     function handleRemoveFromCart() {
         dispatch(removeItem(product.id));
+    }
+
+    function handleChangeButtonText() {
+        setUseSecondaryText(true);
+        setTimeout(() => setUseSecondaryText(false), 1500);
     }
 
     return (
@@ -106,7 +113,22 @@ export default function ProductCard({
                     </span>
                 </div>
 
-                {useAddtoCartButton && <Button onClick={handleAddToCart}>{addToCartText}</Button>}
+                {useAddtoCartButton && (
+                    <Button
+                        onClick={() => {
+                            handleAddToCart();
+                            handleChangeButtonText();
+                        }}
+                        className={`${styles.contentContainer_button}`}
+                    >
+                        <span className={`${useSecondaryText ? styles['contentContainer_button--hidden'] : ''}`}>
+                            {primaryText}
+                        </span>
+                        <span className={`${!useSecondaryText ? styles['contentContainer_button--hidden'] : styles['contentContainer_button--secondaryText']}`}>
+                            {secondaryText}
+                        </span>
+                    </Button>
+                )}
 
                 {useCartLayout && (
                     <div className={styles['contentContainer--cart_actions']}>
