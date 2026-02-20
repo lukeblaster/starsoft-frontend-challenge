@@ -13,23 +13,21 @@ export default function Header() {
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <header>
-      <div className={styles.headerContainer}>
-        <div className={styles.headerLogo}>
-          <Link href="/">
-            <Image src={logo} alt="Logo" width={100} height={40} loading="eager" />
-          </Link>
-        </div>
-        <div className={styles.cartContainer}>
-          <Link href="/cart">
-            <HugeiconsIcon
-              icon={ShoppingBag01FreeIcons}
-              className={styles.cartContainer_cartIcon}
-            />
-          </Link>
-          <div>
-            <span className={styles.cartContainer_cartCount}>{totalItems}</span>
-          </div>
+    <header className={styles.headerContainer}>
+      <div className={styles.headerLogo}>
+        <Link href="/">
+          <Image src={logo} alt="Logo" width={100} height={40} loading="eager" />
+        </Link>
+      </div>
+      <div className={styles.cartContainer}>
+        <Link href="/cart">
+          <HugeiconsIcon
+            icon={ShoppingBag01FreeIcons}
+            className={styles.cartContainer_cartIcon}
+          />
+        </Link>
+        <div>
+          <span className={styles.cartContainer_cartCount}>{totalItems}</span>
         </div>
       </div>
     </header>

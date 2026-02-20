@@ -1,9 +1,13 @@
 .headerContainer {
   display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
   justify-content: space-between;
   align-items: center;
   padding: 20px 32px;
   border-bottom: 1px solid $border-color;
+  background-color: $background-default;
 }
 
 .headerLogo {
