@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    width: 100%;
+    padding: 24px;
+
+    @include media-desktop {
+        padding: 16px;
+    }
+
+    @include media-tablet {
+        padding: 16px;
+    }
+
+    @include media-phone {
+        padding: 16px;
+    }
+}

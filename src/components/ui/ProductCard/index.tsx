@@ -21,6 +21,7 @@ export default function ProductCard({
     primaryText = 'Comprar',
     secondaryText = 'Adicionado ao carrinho',
     useCartLayout = false,
+    priority = false,
 }: ProductCardProps) {
     const dispatch = useAppDispatch();
     const cartItem = useAppSelector((state) =>
@@ -68,9 +69,9 @@ export default function ProductCard({
                         width={150}
                         height={150}
                         quality={75}
-                        loading="eager"
-                        priority
-                        fetchPriority="high"
+                        loading={priority ? 'eager' : 'lazy'}
+                        priority={priority}
+                        fetchPriority={priority ? 'high' : 'auto'}
                         className={`
                         ${styles.imageContainer_image} 
                         ${useCartLayout ? styles['imageContainer_image--cart'] : ''}`}
