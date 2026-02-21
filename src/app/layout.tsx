@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import Head from 'next/head';
 import React from 'react';
 import '../styles/global.scss';
 import Providers from './providers';
@@ -29,11 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={poppins.variable}>
-      <Head>
+      <head>
         {apiUrl && <link rel="dns-prefetch" href={apiUrl} />}
         <link rel="dns-prefetch" href="https://softstar.s3.amazonaws.com" />
         <link rel="preconnect" href="https://softstar.s3.amazonaws.com" crossOrigin="anonymous" />
-      </Head>
+      </head>
       <body>
         <Providers>
           {children}
