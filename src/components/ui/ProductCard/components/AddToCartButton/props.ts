@@ -1,4 +1,6 @@
+import { Product } from "@/models";
 export interface AddToCartButtonProps {
-    onClick: () => void;
-    text: string;
+    product: Product;
+    primaryText: string;
+    secondaryText: string;
 }

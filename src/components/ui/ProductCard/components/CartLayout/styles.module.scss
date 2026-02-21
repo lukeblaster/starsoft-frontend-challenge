@@ -1,0 +1,52 @@
+.actions {
+    padding: 0px;
+    place-self: initial;
+
+    &_quantity {
+        background-color: $background-default;
+        width: fit-content;
+        padding: 2px;
+
+        &_button {
+            background-color: transparent !important;
+            font-weight: 500;
+            height: 36px !important;
+            width: 36px !important;
+            padding: 0 !important;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            border: none !important;
+            box-shadow: none !important;
+            min-width: 36px !important;
+            min-height: 36px !important;
+        }
+
+        &_value {
+            height: 36px;
+            width: 36px;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size: 16px;
+            font-weight: 500;
+            color: $text-primary;
+        }
+    }
+
+    &_removeButton {
+        color: $text-primary;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 50%;
+        height: 36px;
+        width: 36px;
+    }
+}

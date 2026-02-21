@@ -1,17 +1,14 @@
-'use client';
-
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { addItem, removeItem, updateQuantity } from '@/app/store/slices/cartSlice';
-import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
 import { formatPrice } from '@/utils/format-price';
-import { Delete01Icon, MinusSignFreeIcons, PlusSignFreeIcons } from '@hugeicons/core-free-icons/index';
-import { HugeiconsIcon } from '@hugeicons/react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { Button } from '../Button';
-import AddToCartButton from './components/AddToCartButton';
+import Card from '../Card';
+
+const AddToCartButton = dynamic(() => import('./components/AddToCartButton'));
+const CartLayout = dynamic(() => import('./components/CartLayout'));
+
+import Container from '../Container';
 import { ProductCardProps } from './props';
 import styles from './styles.module.scss';
 
@@ -22,40 +19,8 @@ export default function ProductCard({
     secondaryText = 'Adicionado ao carrinho',
     useCartLayout = false,
 }: ProductCardProps) {
-    const dispatch = useAppDispatch();
-    const cartItem = useAppSelector((state) =>
-        state.cart.items.find((item) => item.product.id === product.id)
-    );
-    const [quantity, setQuantity] = useState(cartItem?.quantity || 1);
-    const { text, handleChangeText } = useHandleChangeText({ primaryText, secondaryText, duration: 1000 });
-
-    function increment() {
-        const newQuantity = quantity + 1;
-        setQuantity(newQuantity);
-        if (useCartLayout && cartItem) {
-            dispatch(updateQuantity({ productId: product.id, quantity: newQuantity }));
-        }
-    }
-
-    function decrement() {
-        const newQuantity = Math.max(1, quantity - 1);
-        setQuantity(newQuantity);
-        if (useCartLayout && cartItem) {
-            dispatch(updateQuantity({ productId: product.id, quantity: newQuantity }));
-        }
-    }
-
-    function handleAddToCart() {
-        dispatch(addItem({ product, quantity }));
-        handleChangeText();
-    }
-
-    function handleRemoveFromCart() {
-        dispatch(removeItem(product.id));
-    }
-
     return (
-        <div
+        <Card
             className={`${styles.container} ${useCartLayout ? styles['container--cart'] : ''}`}
         >
             <div
@@ -77,77 +42,55 @@ export default function ProductCard({
                     />
                 </Link>
             </div>
-            <div
+            <Container
+                display="flex"
+                direction="column"
+                gap={12}
                 className={`
-                ${styles.contentContainer} 
-                ${useCartLayout ? styles['contentContainer--cart'] : ''}`}
+                ${styles.content} 
+                ${useCartLayout ? styles['content--cart'] : ''}`}
             >
-                <div
+                <Container
+                    gap={useCartLayout ? 0 : 4}
+                    display="flex"
+                    direction="column"
                     className={`
-                    ${styles.contentContainer_info} 
-                    ${useCartLayout ? styles['contentContainer--cart_info'] : ''}`}
+                    ${styles.content_information} 
+                    ${useCartLayout ? styles['content--cart_information'] : ''}`}
                 >
-                    <Link href={`/products/${product.id}`} className={styles.contentContainer_nameLink}>
-                        <h3 className={styles.contentContainer_name}>{product.name}</h3>
+                    <Link href={`/products/${product.id}`} className={styles.content_nameLink}>
+                        <h3 className={styles.content_name}>{product.name}</h3>
                     </Link>
                     <span
                         className={`
-                        ${styles.contentContainer_description} 
-                        ${useCartLayout ? styles['contentContainer--cart_description'] : ''}`}
+                        ${styles.content_description} 
+                        ${useCartLayout ? styles['content--cart_description'] : ''}`}
                     >
                         {product.description}
                     </span>
-                </div>
-                <div className={styles.contentContainer_priceContainer}>
+                </Container>
+                <Container display='flex' direction='row' alignItems='center' gap={8} className={styles.content_amount}>
                     <Image
                         src={ethereumIcon}
                         alt="Ethereum"
                         priority
                         className={`
-                        ${styles.contentContainer_priceContainer_icon} 
-                        ${useCartLayout ? styles['contentContainer--cart_priceContainer_icon'] : ''}`}
+                        ${styles.content_amount_icon} 
+                        ${useCartLayout ? styles['content--cart_amount_icon'] : ''}`}
                     />
                     <span
                         className={`
-                        ${styles.contentContainer_priceContainer_price} 
-                        ${useCartLayout ? styles['contentContainer--cart_priceContainer_price'] : ''}`}
+                        ${styles.content_amount_number} 
+                        ${useCartLayout ? styles['content--cart_amount_number'] : ''}`}
                     >
                         {formatPrice(product.price)}
                     </span>
-                </div>
+                </Container>
 
-                {useAddtoCartButton && <AddToCartButton onClick={handleAddToCart} text={text} />}
+                {useAddtoCartButton && <AddToCartButton product={product} primaryText={primaryText} secondaryText={secondaryText} />}
 
-                {useCartLayout && (
-                    <div className={styles['contentContainer--cart_actions']}>
-                        <div className={styles['contentContainer--cart_actions_quantity']}>
-                            <Button
-                                className={styles['contentContainer--cart_actions_quantity_button']}
-                                onClick={decrement}
-                            >
-                                <HugeiconsIcon icon={MinusSignFreeIcons} size={16} />
-                            </Button>
-                            <span className={styles['contentContainer--cart_actions_quantity_value']}>
-                                {quantity}
-                            </span>
-                            <Button
-                                className={styles['contentContainer--cart_actions_quantity_button']}
-                                onClick={increment}
-                            >
-                                <HugeiconsIcon icon={PlusSignFreeIcons} size={16} />
-                            </Button>
-                        </div>
-                        <div>
-                            <Button
-                                className={styles['contentContainer--cart_actions_removeButton']}
-                                onClick={handleRemoveFromCart}
-                            >
-                                <HugeiconsIcon icon={Delete01Icon} />
-                            </Button>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
+                {useCartLayout && <CartLayout product={product} />}
+            </Container>
+        </Card>
     );
 }

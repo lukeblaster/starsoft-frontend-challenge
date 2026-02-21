@@ -1,5 +1,5 @@
 'use client';
-import { useAppSelector } from '@/app/store/hooks';
+import { useAppSelector } from '@/store/hooks';
 import { ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
 import Link from 'next/link';

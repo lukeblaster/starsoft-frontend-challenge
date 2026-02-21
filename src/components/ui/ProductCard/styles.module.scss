@@ -1,12 +1,4 @@
 .container {
-  background-color: $background-card;
-  border-radius: $border-radius;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
-  width: 100%;
   max-width: 250px;
   transition: outline 15ms ease-in-out;
 
@@ -18,21 +10,21 @@
     max-width: 180px;
   }
 
-  &--cart {
-    flex-direction: row;
-    background-color: $background-card-secondary;
-    max-width: none;
-
-    &:hover {
-      background-color: $background-card-secondary !important;
-      outline: none !important;
-      cursor: default !important;
-    }
-  }
-
   &:hover {
     outline: 1px solid $border-color;
     box-shadow: $box-shadow;
+  }
+}
+
+.container--cart {
+  flex-direction: row;
+  background-color: $background-card-secondary;
+  max-width: none;
+
+  &:hover {
+    background-color: $background-card-secondary !important;
+    outline: none !important;
+    cursor: default !important;
   }
 }
 
@@ -60,25 +52,25 @@
     object-fit: cover;
   }
 
-  &--cart {
-    width: 120px;
-    height: 120px;
-  }
+
 }
 
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.imageContainer--cart {
+  width: 120px;
+  height: 120px;
+}
+
+.content {
+  padding: 0;
+  width: 100%;
 
   @include media-phone {
     gap: 12px;
   }
 
-  &_info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  &_information {
+    padding: 0;
+    place-self: initial;
   }
 
   &_name {
@@ -116,17 +108,17 @@
     overflow: hidden;
   }
 
-  &_priceContainer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  &_amount {
+    padding: 0;
+    margin: 0;
+    place-self: initial;
 
     &_icon {
       width: 20px;
       height: 20px;
     }
 
-    &_price {
+    &_number {
       font-size: 18px;
       font-weight: 500;
       color: $text-primary;
@@ -140,94 +132,35 @@
     padding: 0 16px;
   }
 
-  &--cart {
-    gap: 10px;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
 
-    &_info {
-      gap: 0px;
+}
+
+.content--cart {
+  gap: 10px;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  &_description {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+  }
+
+  &_priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &_icon {
+      width: 18px;
+      height: 18px;
     }
 
-    &_description {
-      -webkit-line-clamp: 1;
-      line-clamp: 1;
-    }
-
-    &_priceContainer {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-
-      &_icon {
-        width: 18px;
-        height: 18px;
-      }
-
-      &_price {
-        font-size: 16px;
-        line-height: 1;
-      }
-    }
-
-    &_actions {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-
-      &_quantity {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $background-default;
-        border-radius: $border-radius;
-        width: fit-content;
-        padding: 2px;
-
-        &_button {
-          background-color: transparent !important;
-          font-weight: 500;
-          height: 36px !important;
-          width: 36px !important;
-          padding: 0 !important;
-          align-items: center;
-          justify-content: center;
-          display: flex;
-          border: none !important;
-          box-shadow: none !important;
-          min-width: 36px !important;
-          min-height: 36px !important;
-        }
-
-        &_value {
-          height: 36px;
-          width: 36px;
-          padding: 0;
-          align-items: center;
-          justify-content: center;
-          display: flex;
-          font-size: 16px;
-          font-weight: 500;
-          color: $text-primary;
-        }
-      }
-
-      &_removeButton {
-        color: $text-primary;
-        border: none;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        border-radius: 50%;
-        height: 36px;
-        width: 36px;
-      }
+    &_price {
+      font-size: 16px;
+      line-height: 1;
     }
   }
+
+
 }

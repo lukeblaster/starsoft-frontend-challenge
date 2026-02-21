@@ -1,12 +1,12 @@
 'use client';
 
-import { useAppDispatch } from '@/app/store/hooks';
-import { addItem } from '@/app/store/slices/cartSlice';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import { useProductsById } from '@/hooks/products/queries';
 import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
+import { useAppDispatch } from '@/store/hooks';
+import { addItem } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
 import { MinusSignFreeIcons, PlusSignFreeIcons, ShoppingCart01Icon } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';

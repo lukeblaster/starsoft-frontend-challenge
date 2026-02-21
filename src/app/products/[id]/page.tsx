@@ -2,8 +2,6 @@ import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import Product from './product';
 
-import Footer from '@/components/ui/Footer';
-import Header from '@/components/ui/Header';
 import ProductDetailsSkeleton from './_components/ProductDetailsSkeleton';
 
 import { prefetchProductsById } from '@/hooks/products/queries/useProductsById/prefetch';
@@ -18,15 +16,15 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
 
   return (
     <div className={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<ProductDetailsSkeleton />}>
           <Product />
         </Suspense>
       </HydrationBoundary>
-      <div className={styles.footer}>
+      {/* <div className={styles.footer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }

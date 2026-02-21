@@ -1,11 +1,11 @@
 'use client';
 
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
-import { clearCart } from '@/app/store/slices/cartSlice';
 import { Button } from '@/components/ui/Button';
 import ProductCard from '@/components/ui/ProductCard';
 import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { clearCart } from '@/store/slices/cartSlice';
 import { formatPrice } from '@/utils/format-price';
 import Image from 'next/image';
 import { useMemo } from 'react';

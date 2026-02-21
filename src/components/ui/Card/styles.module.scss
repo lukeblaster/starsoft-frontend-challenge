@@ -1,0 +1,15 @@
+.card {
+    height: 100%;
+    width: 100%;
+    background-color: $background-card;
+    border-radius: $border-radius;
+    padding: 16px;
+
+    @include media-phone {
+        max-width: 200px;
+    }
+
+    @include media-tablet {
+        max-width: 180px;
+    }
+}
