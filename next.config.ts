@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'softstar.s3.amazonaws.com',
+        pathname: '/items/**',
       },
     ],
     formats: ['image/avif', 'image/webp'],
@@ -18,9 +19,9 @@ const nextConfig: NextConfig = {
   sassOptions: {
     additionalData: `@use '@/styles/_main.scss' as *; @use '@/styles/_mixins.scss' as *;`,
   },
-  experimental: {
-    optimizePackageImports: ['@hugeicons/react', '@hugeicons/core-free-icons'],
-  },
+  // experimental: {
+  //   optimizePackageImports: ['@hugeicons/react', '@hugeicons/core-free-icons'],
+  // },
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,

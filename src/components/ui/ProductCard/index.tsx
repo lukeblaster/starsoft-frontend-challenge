@@ -103,7 +103,10 @@ export default function ProductCard({
                     <Image
                         src={ethereumIcon}
                         alt="Ethereum"
-                        priority
+                        quality={75}
+                        loading={priority ? 'eager' : 'lazy'}
+                        priority={priority}
+                        fetchPriority={priority ? 'high' : 'auto'}
                         className={`
                         ${styles.contentContainer_priceContainer_icon} 
                         ${useCartLayout ? styles['contentContainer--cart_priceContainer_icon'] : ''}`}

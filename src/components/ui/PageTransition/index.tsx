@@ -4,9 +4,9 @@ import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
 const variants = {
-    initial: { x: 16, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: -16, opacity: 0 },
+    initial: { x: 16, visibility: 'hidden' },
+    animate: { x: 0, visibility: 'visible' },
+    exit: { x: -16, visibility: 'hidden' },
 }
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
