@@ -1,0 +1,36 @@
+.container {
+    gap: 16px;
+    padding: 16px;
+    place-self: center;
+
+    &--flex {
+        display: flex;
+
+        &--column {
+            flex-direction: column;
+        }
+
+        &--row {
+            flex-direction: row;
+        }
+    }
+
+    &--grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        @include media-desktop {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include media-phone {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @include media-tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+    }
+}

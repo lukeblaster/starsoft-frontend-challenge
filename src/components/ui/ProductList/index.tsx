@@ -8,6 +8,7 @@ import ProductCard from '../ProductCard';
 import ProductListSkeleton from '../ProductListSkeleton';
 import ProductListError from './error';
 
+import Container from '../Container';
 import styles from './styles.module.scss';
 
 export default function ProductList() {
@@ -19,17 +20,17 @@ export default function ProductList() {
   if (error) return <ProductListError />;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.productListContainer}>
+    <Container display="flex" direction="column" gap={32} justifyContent="center" alignItems="center">
+      <Container display="grid" className={styles.productList}>
         {products?.map((product) => (
           <ProductCard key={product.id} product={product} useAddtoCartButton />
         ))}
-      </div>
+      </Container>
       <LoadButton
         onClick={() => fetchNextPage()}
         isLoading={isFetchingNextPage}
         hasNextPage={hasNextPage}
       />
-    </div>
+    </Container>
   );
 }

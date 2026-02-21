@@ -1,10 +1,11 @@
+import Container from '@/components/ui/Container';
 import ProductList from '@/components/ui/ProductList';
 
 
 export default function Page() {
     return (
-        <div className={'pageContainer'}>
+        <Container display="flex" direction="column" gap={0}>
             <ProductList />
-        </div>
+        </Container>
     );
 }
