@@ -6,5 +6,4 @@ export interface ProductCardProps {
   primaryText?: string;
   secondaryText?: string;
   useCartLayout?: boolean;
-  priority?: boolean;
 }

@@ -10,7 +10,7 @@ export default function Header() {
     <header className={styles.headerContainer}>
       <div className={styles.headerLogo}>
         <Link href="/" aria-label='Ir para a página inicial'>
-          <Image src={logo} alt="Logo" width={100} height={40} priority />
+          <Image src={logo} alt="Logo" width={100} height={40} loading="eager" />
         </Link>
       </div>
       <CartCounter />

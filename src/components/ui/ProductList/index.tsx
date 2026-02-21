@@ -10,8 +10,6 @@ import ProductListError from './error';
 
 import styles from './styles.module.scss';
 
-const PRIORITY_IMAGE_COUNT = 8;
-
 export default function ProductList() {
   const { data, isLoading, error, fetchNextPage, hasNextPage, isFetchingNextPage } = useProducts();
 
@@ -23,13 +21,8 @@ export default function ProductList() {
   return (
     <div className={styles.container}>
       <div className={styles.productListContainer}>
-        {products?.map((product, index) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            useAddtoCartButton
-            priority={index < PRIORITY_IMAGE_COUNT}
-          />
+        {products?.map((product) => (
+          <ProductCard key={product.id} product={product} useAddtoCartButton />
         ))}
       </div>
       <LoadButton
