@@ -1,0 +1,17 @@
+.productsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.emptyCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    p {
+        font-size: 18px;
+        color: $text-muted;
+    }
+}

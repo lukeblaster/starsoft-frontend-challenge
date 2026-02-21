@@ -1,0 +1,52 @@
+.paymentDetails {
+  width: 100%;
+  padding: 0 16px;
+  place-self: initial;
+
+  &_totalAmount {
+    padding: 0;
+    place-self: initial;
+
+    &_label {
+      font-size: 18px;
+      font-weight: 700;
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    &_amountContainer {
+      gap: 8px;
+      padding: 0;
+
+      &_iconContainer {
+        padding: 0;
+        place-self: initial;
+      }
+
+      &_amount {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1;
+      }
+    }
+  }
+
+  @include media-phone {
+    padding: 0 8px;
+  }
+
+  @include media-tablet {
+    padding: 0 8px;
+  }
+}
+
+.paymentDetails_paymentButton {
+  &_button {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-primary;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+}

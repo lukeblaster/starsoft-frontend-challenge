@@ -4,6 +4,7 @@ import { ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons/index';
 import { HugeiconsIcon } from '@hugeicons/react';
 import Link from 'next/link';
 
+import Container from '../Container';
 import styles from './styles.module.scss';
 
 export default function CartCounter() {
@@ -11,16 +12,14 @@ export default function CartCounter() {
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     return (
-        <div className={styles.cartContainer}>
+        <Container display="flex" direction="row" alignItems="center" justifyContent="center" gap={6} className={styles.cartCount}>
             <Link href="/cart" aria-label='Ir para o carrinho'>
                 <HugeiconsIcon
                     icon={ShoppingBag01FreeIcons}
-                    className={styles.cartContainer_cartIcon}
+                    className={styles.cartCount_cartIcon}
                 />
             </Link>
-            <div>
-                <span className={styles.cartContainer_cartCount}>{totalItems}</span>
-            </div>
-        </div>
+            <span className={styles.cartCount_cartCount}>{totalItems}</span>
+        </Container>
     );
 }

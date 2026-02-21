@@ -1,43 +1,15 @@
 .container {
-  height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .productContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  place-self: center;
   flex: 1;
-
-  @include media-desktop {
-    padding: 16px;
-  }
-
-  @include media-tablet {
-    padding: 16px;
-  }
-
-  @include media-phone {
-    padding: 16px;
-  }
+  padding: 0;
 }
 
 .product {
   width: 100%;
   height: max-content;
-  display: flex;
-  flex-direction: row;
-  place-self: center;
-  gap: 24px;
-  padding: 16px;
-  background-color: $background-card;
-  border-radius: $border-radius;
   max-width: 1200px;
 
   @include media-phone {
@@ -78,11 +50,9 @@
   }
 
   &_info {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
     padding: 16px 0;
     width: 100%;
+    place-self: initial;
 
     &_name {
       font-size: 24px;
@@ -99,15 +69,14 @@
       max-width: 600px;
     }
 
-    &_price {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    &_amount {
       font-size: 24px;
       font-weight: 500;
       margin: 0;
+      padding: 0;
       color: $text-primary;
       line-height: 1;
+      place-self: initial;
 
       &_icon {
         width: 30px;
@@ -116,18 +85,13 @@
     }
 
     &_actions {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
       gap: 16px;
+      padding: 0;
       margin-top: auto;
+      height: 48px;
       width: 100%;
 
       &_quantity {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         background-color: $background-default;
         border-radius: $border-radius;
         width: fit-content;
@@ -135,17 +99,17 @@
         height: 100%;
 
         &_button {
-          background-color: transparent !important;
-          height: 36px !important;
-          width: 36px !important;
-          padding: 0 !important;
+          background-color: transparent;
+          height: 36px;
+          width: 36px;
+          padding: 0;
           align-items: center;
           justify-content: center;
           display: flex;
-          border: none !important;
-          box-shadow: none !important;
-          min-width: 36px !important;
-          min-height: 36px !important;
+          border: none;
+          box-shadow: none;
+          min-width: 36px;
+          min-height: 36px;
         }
 
         &_value {
@@ -170,20 +134,4 @@
       }
     }
   }
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-}
-
-.backButton {
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  text-decoration: underline;
 }

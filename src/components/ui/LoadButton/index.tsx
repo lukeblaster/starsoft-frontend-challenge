@@ -1,6 +1,7 @@
 import { useProgressAnimation } from '@/hooks/animations';
 import { motion } from 'motion/react';
 import { Button } from '../Button';
+import Container from '../Container';
 import { LoadButtonProps } from './props';
 import styles from './styles.module.scss';
 
@@ -12,7 +13,7 @@ export default function LoadButton({
   const { scope, width } = useProgressAnimation({ isLoading });
 
   return (
-    <div className={styles.container}>
+    <Container display="flex" direction="column" gap={10} className={styles.container}>
       {isLoading && (
         <motion.div
           className={styles.progressContainer}
@@ -34,6 +35,6 @@ export default function LoadButton({
       >
         {isLoading ? 'Carregando...' : hasNextPage ? 'Carregar mais' : 'Você já viu tudo'}
       </Button>
-    </div>
+    </Container>
   );
 }

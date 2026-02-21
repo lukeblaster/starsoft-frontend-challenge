@@ -2,6 +2,8 @@
 
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Container from '@/components/ui/Container';
 import { useProductsById } from '@/hooks/products/queries';
 import { useHandleChangeText } from '@/hooks/ui';
 import ethereumIcon from '@/public/images/ethereum.svg';
@@ -54,8 +56,8 @@ export default function Product() {
     return (
         <>
             <Breadcrumb items={[{ label: 'Produtos', href: '/' }, { label: product.name }]} />
-            <div className={styles.productContainer}>
-                <div className={styles.product}>
+            <Container display="flex" direction="column" gap={24} className={styles.productContainer}>
+                <Card display="flex" direction="row" gap={24} className={styles.product}>
                     <Image
                         src={product.image}
                         alt={product.name}
@@ -64,15 +66,27 @@ export default function Product() {
                         loading="eager"
                         className={styles.product_image}
                     />
-                    <div className={styles.product_info}>
+                    <Container display="flex" direction="column" gap={24} className={styles.product_info}>
                         <h1 className={styles.product_info_name}>{product.name}</h1>
                         <p className={styles.product_info_description}>{product.description}</p>
-                        <div className={styles.product_info_price}>
-                            <Image src={ethereumIcon} alt="Ethereum" className={styles.product_info_price_icon} />
+                        <Container display="flex" direction="row" alignItems="center" gap={8} className={styles.product_info_amount}>
+                            <Image src={ethereumIcon} alt="Ethereum" className={styles.product_info_amount_icon} />
                             <span>{formatPrice(product.price)}</span>
-                        </div>
-                        <div className={styles.product_info_actions}>
-                            <div className={styles.product_info_actions_quantity}>
+                        </Container>
+                        <Container
+                            display="flex"
+                            direction="row"
+                            alignItems="center"
+                            className={styles.product_info_actions}
+                        >
+                            <Container
+                                display="flex"
+                                direction="row"
+                                alignItems="center"
+                                justifyContent="center"
+                                gap={0}
+                                className={styles.product_info_actions_quantity}
+                            >
                                 <Button className={styles.product_info_actions_quantity_button} onClick={decrement}>
                                     <HugeiconsIcon icon={MinusSignFreeIcons} size={16} />
                                 </Button>
@@ -80,15 +94,15 @@ export default function Product() {
                                 <Button className={styles.product_info_actions_quantity_button} onClick={increment}>
                                     <HugeiconsIcon icon={PlusSignFreeIcons} size={16} />
                                 </Button>
-                            </div>
+                            </Container>
                             <Button className={styles.product_info_actions_button} onClick={handleAddToCart}>
                                 <HugeiconsIcon icon={ShoppingCart01Icon} />
                                 {text}
                             </Button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </Container>
+                    </Container>
+                </Card>
+            </Container>
         </>
     );
 }

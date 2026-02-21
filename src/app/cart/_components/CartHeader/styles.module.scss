@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  place-self: initial;
+  padding: 0;
+  width: 100%;
+
+  &_title {
+    font-size: 24px;
+    font-weight: 500;
+    color: $text-primary;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+}

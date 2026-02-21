@@ -20,7 +20,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           const isLast = index === items.length - 1;
 
           return (
-            <li key={item.href} className={styles.breadcrumb_item}>
+            <li key={item.label} className={styles.breadcrumb_item}>
               {isLast ? (
                 <span className={styles.breadcrumb_current} aria-current="page">
                   {item.label}
