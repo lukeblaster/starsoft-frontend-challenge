@@ -4,19 +4,17 @@ import { useProducts } from '@/hooks/products/queries/useProducts';
 import { Product } from '@/models';
 
 import LoadButton from '../LoadButton';
-import ProductCard from '../ProductCard';
-import ProductListSkeleton from '../ProductListSkeleton';
 import ProductListError from './error';
 
 import Container from '../Container';
+import ProductCard from '../ProductCard';
 import styles from './styles.module.scss';
 
 export default function ProductList() {
-  const { data, isLoading, error, fetchNextPage, hasNextPage, isFetchingNextPage } = useProducts();
+  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage } = useProducts();
 
   const products: Product[] = data?.allProducts ?? [];
 
-  if (isLoading) return <ProductListSkeleton />;
   if (error) return <ProductListError />;
 
   return (
