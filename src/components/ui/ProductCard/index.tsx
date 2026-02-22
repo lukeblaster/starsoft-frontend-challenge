@@ -18,6 +18,7 @@ export default function ProductCard({
     primaryText = 'Comprar',
     secondaryText = 'Adicionado ao carrinho',
     useCartLayout = false,
+    priority = false,
 }: ProductCardProps) {
     return (
         <Card
@@ -33,9 +34,10 @@ export default function ProductCard({
                         width={150}
                         height={150}
                         quality={75}
-                        loading="eager"
-                        priority
-                        fetchPriority="high"
+                        loading={priority ? 'eager' : 'lazy'}
+                        priority={priority}
+                        fetchPriority={priority ? 'high' : 'auto'}
+                        // sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
                         className={`
                         ${styles.imageContainer_image} 
                         ${useCartLayout ? styles['imageContainer_image--cart'] : ''}`}

@@ -57,12 +57,10 @@
   background-color: vars.$background-default !important;
 
   &::after {
-    background: linear-gradient(
-      0.25turn,
-      transparent,
-      vars.$secondary-color,
-      transparent
-    ) !important;
+    background: linear-gradient(0.25turn,
+        transparent,
+        vars.$secondary-color,
+        transparent) !important;
   }
 }
 

@@ -17,7 +17,7 @@ $text-muted: #cccccc;
 
 $card-color: #362154;
 
-$font-primary: 'Poppins',
+$font-primary: var(--font-primary),
   system-ui,
   -apple-system,
   sans-serif;
