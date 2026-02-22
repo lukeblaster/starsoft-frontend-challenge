@@ -22,7 +22,7 @@ export async function GET(request: Request, context: { params: Promise<{ id: str
 
   const response = await fetch(
     `${apiUrl}/api/v1/products?page=${page}&rows=${rows}&sortBy=${sortBy}&orderBy=${orderBy}`,
-    { next: { revalidate: 0 } }
+    { next: { revalidate: 60 } }
   );
 
   if (!response.ok) {
