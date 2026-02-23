@@ -13,7 +13,7 @@ export default function LoadButton({
   const { scope, width } = useProgressAnimation({ isLoading });
 
   return (
-    <Container display="flex" direction="column" gap={10} className={styles.container}>
+    <Container display="flex" direction="column" gap={10} className={styles.container} >
       {isLoading && (
         <motion.div
           className={styles.progressContainer}
@@ -28,6 +28,7 @@ export default function LoadButton({
       )}
       <Button
         className={styles.button}
+        data-testid="load-button"
         onClick={() => onClick()}
         disabled={isLoading || !hasNextPage}
         isloading={isLoading}

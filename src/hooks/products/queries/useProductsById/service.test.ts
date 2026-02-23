@@ -1,5 +1,5 @@
-import { GET } from '@/app/api/products/[id]/route';
 import { NextResponse } from 'next/server';
+import { GET } from '../../../../app/api/products/[id]/route';
 
 jest.mock('next/server', () => ({
     NextResponse: {
