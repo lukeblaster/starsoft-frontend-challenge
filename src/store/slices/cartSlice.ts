@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '@/models';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface CartItem {
   product: Product;
   quantity: number;
 }
 
-interface CartState {
+export interface CartState {
   items: CartItem[];
 }
 
