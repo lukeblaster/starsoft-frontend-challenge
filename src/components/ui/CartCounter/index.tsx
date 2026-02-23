@@ -19,7 +19,7 @@ export default function CartCounter() {
                     className={styles.cartCount_cartIcon}
                 />
             </Link>
-            <span className={styles.cartCount_cartCount}>{totalItems}</span>
+            <span className={styles.cartCount_cartCount} data-testid="cart-counter-total-items">{totalItems}</span>
         </Container>
     );
 }
