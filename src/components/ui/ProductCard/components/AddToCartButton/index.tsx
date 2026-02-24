@@ -18,7 +18,7 @@ export default function AddToCartButton({ product, primaryText, secondaryText }:
     return (
         <Button
             onClick={handleAddToCart}
-            className={`${styles.contentContainer_button}`}
+            className={`${styles.button}`}
         >
             {text}
         </Button>

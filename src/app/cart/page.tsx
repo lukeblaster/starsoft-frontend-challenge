@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 export default function CartPage() {
   return (
-    <Container display="flex" direction="column" gap={40} className={styles.container}>
+    <Container display="flex" direction="column" gap={40} className={styles.cartContainer}>
       <CartHeader />
       <Container display="flex" direction="column" gap={24} className={styles.content}>
         <CartProductsList />
