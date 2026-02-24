@@ -37,7 +37,7 @@ export default function ProductCard({
                         loading={priority ? 'eager' : 'lazy'}
                         priority={priority}
                         fetchPriority={priority ? 'high' : 'auto'}
-                        // sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                        sizes="(max-width: 768px) 140px, 230px"
                         className={`
                         ${styles.imageContainer_image} 
                         ${useCartLayout ? styles['imageContainer_image--cart'] : ''}`}
@@ -75,7 +75,7 @@ export default function ProductCard({
                     <Image
                         src={ethereumIcon}
                         alt="Ethereum"
-                        priority
+                        priority={priority}
                         className={`
                         ${styles.content_amount_icon} 
                         ${useCartLayout ? styles['content--cart_amount_icon'] : ''}`}
