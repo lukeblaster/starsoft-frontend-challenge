@@ -1,5 +1,5 @@
 
-import logo from '@/public/images/logo.png';
+import logo from '@/public/images/logo.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import CartCounter from '../CartCounter';
