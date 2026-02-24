@@ -1,24 +1,19 @@
-version: "3.8"
-
 services:
-  web:
-    container_name: nftstore
+  # Node.js service (use with: docker compose up nextjs-standalone --build)
+  nextjs-standalone:
     build:
       context: .
-      dockerfile: ./Dockerfile
-      target: development
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: https://api-challenge.starsoft.games
+        NEXT_PUBLIC_FRONTEND_URL: http://localhost:3000
+    image: nextjs-standalone-image
+    container_name: nextjs-standalone-container
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_FRONTEND_URL: http://localhost:3000
+      NEXT_PUBLIC_API_URL: https://api-challenge.starsoft.games
+      PORT: "3000"
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
-      - nftstore_node_modules:/app/node_modules
-    env_file:
-      - .env
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
-
-volumes:
-  nftstore_node_modules:
-  nftstore-data:
-    driver: local
+    restart: unless-stopped
